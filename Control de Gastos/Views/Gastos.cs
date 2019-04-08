@@ -67,11 +67,20 @@ namespace Control_de_Gastos
 
         private void registrarGasto_Click(object sender, EventArgs e)
         {
+            if (cantidadBox.Value != 1) { 
             String fecha = fechaPicker.Value.ToShortDateString();
-            var tipoGasto = tipoGastoListBox.GetItemText(tipoGastoListBox.SelectedItem);
-            var comercio = comercioListBox.GetItemText(comercioListBox.SelectedItem);
+            var tipoGasto = tipoGastoComboBox.GetItemText(tipoGastoComboBox.SelectedItem);
+            var comercio = comercioComboBox.GetItemText(comercioComboBox.SelectedItem);
             var cantidad = cantidadBox.Value;
-            ingresarGasto(fecha,tipoGasto, comercio, cantidad);
+                if (dolaresRadioButton.Checked)
+                {
+                    cantidad = decimal.Parse(textBox1.Text);
+                    ingresarGasto(fecha, tipoGasto, comercio, cantidad);
+                }
+                ingresarGasto(fecha,tipoGasto, comercio, cantidad);
+            }
+            else { MessageBox.Show("No ingresó una cantidad para el gasto", "Error!", MessageBoxButtons.OK,MessageBoxIcon.Error); }
+
         }
 
         private void ingresarGasto(String fecha,string tipoGasto, string comercio, decimal cantidad) {
@@ -81,8 +90,9 @@ namespace Control_de_Gastos
             //    command.Connection.Open();
             //    command.ExecuteNonQuery();
             //}
-            tipoGastoListBox.SelectedIndex = 0;
-            comercioListBox.SelectedIndex = 0;
+            principalController.registrarGasto(fecha,tipoGasto,comercio,cantidad);
+            tipoGastoComboBox.SelectedIndex = 0;
+            comercioComboBox.SelectedIndex = 0;
             cantidadBox.Value = cantidadBox.Minimum;
         }
 
@@ -93,8 +103,10 @@ namespace Control_de_Gastos
 
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form2 = new Form();
-            form2.Show();
+            principalController.generarReporte();
+            panelPrincipal.Hide();
+            panelReporte.Show();
+
         }
 
         private void agregarNuevoTipoGastoImage_Click(object sender, EventArgs e)
@@ -144,6 +156,11 @@ namespace Control_de_Gastos
                 DateTime fecha = fechaPicker.Value;
                 await callWebServiceAsync(fecha.ToString("dd/MM/yyyy"));
             }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panelPrincipal.Show();
         }
     }
 }

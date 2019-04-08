@@ -34,6 +34,7 @@ namespace Control_de_Gastos
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gastos));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gastosTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.digitarGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +73,10 @@ namespace Control_de_Gastos
             this.tipoCambioLabel = new System.Windows.Forms.Label();
             this.tipoGastoComboBox = new System.Windows.Forms.ComboBox();
             this.comercioComboBox = new System.Windows.Forms.ComboBox();
-            this.comercioListBox = new System.Windows.Forms.ComboBox();
-            this.tipoGastoListBox = new System.Windows.Forms.ComboBox();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.panelReporte = new System.Windows.Forms.Panel();
+            panelReporte.Hide();
+            this.reporteGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tiposBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet)).BeginInit();
@@ -89,6 +92,9 @@ namespace Control_de_Gastos
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.tipoCambioPanel.SuspendLayout();
+            this.panelPrincipal.SuspendLayout();
+            this.panelReporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -105,11 +111,19 @@ namespace Control_de_Gastos
             // gastosTab
             // 
             this.gastosTab.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
             this.digitarGastosToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.gastosTab.Name = "gastosTab";
             this.gastosTab.Size = new System.Drawing.Size(54, 20);
             this.gastosTab.Text = "Gastos";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem1.Text = "Principal";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // digitarGastosToolStripMenuItem
             // 
@@ -158,7 +172,7 @@ namespace Control_de_Gastos
             // 
             // fechaPicker
             // 
-            this.fechaPicker.Location = new System.Drawing.Point(124, 56);
+            this.fechaPicker.Location = new System.Drawing.Point(109, 20);
             this.fechaPicker.MaxDate = new System.DateTime(2019, 3, 16, 0, 0, 0, 0);
             this.fechaPicker.Name = "fechaPicker";
             this.fechaPicker.Size = new System.Drawing.Size(200, 20);
@@ -170,7 +184,7 @@ namespace Control_de_Gastos
             // 
             this.fechaLabel.AutoSize = true;
             this.fechaLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaLabel.Location = new System.Drawing.Point(41, 57);
+            this.fechaLabel.Location = new System.Drawing.Point(26, 21);
             this.fechaLabel.Name = "fechaLabel";
             this.fechaLabel.Size = new System.Drawing.Size(59, 20);
             this.fechaLabel.TabIndex = 2;
@@ -180,7 +194,7 @@ namespace Control_de_Gastos
             // 
             this.tipoGastoLabel.AutoSize = true;
             this.tipoGastoLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoGastoLabel.Location = new System.Drawing.Point(30, 155);
+            this.tipoGastoLabel.Location = new System.Drawing.Point(15, 119);
             this.tipoGastoLabel.Name = "tipoGastoLabel";
             this.tipoGastoLabel.Size = new System.Drawing.Size(122, 20);
             this.tipoGastoLabel.TabIndex = 3;
@@ -190,7 +204,7 @@ namespace Control_de_Gastos
             // 
             this.comercioLabel.AutoSize = true;
             this.comercioLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comercioLabel.Location = new System.Drawing.Point(379, 155);
+            this.comercioLabel.Location = new System.Drawing.Point(364, 119);
             this.comercioLabel.Name = "comercioLabel";
             this.comercioLabel.Size = new System.Drawing.Size(86, 20);
             this.comercioLabel.TabIndex = 4;
@@ -200,7 +214,7 @@ namespace Control_de_Gastos
             // 
             this.cantidadLabel.AutoSize = true;
             this.cantidadLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadLabel.Location = new System.Drawing.Point(687, 155);
+            this.cantidadLabel.Location = new System.Drawing.Point(672, 119);
             this.cantidadLabel.Name = "cantidadLabel";
             this.cantidadLabel.Size = new System.Drawing.Size(86, 20);
             this.cantidadLabel.TabIndex = 5;
@@ -255,7 +269,7 @@ namespace Control_de_Gastos
             // 
             // cantidadBox
             // 
-            this.cantidadBox.Location = new System.Drawing.Point(691, 190);
+            this.cantidadBox.Location = new System.Drawing.Point(676, 154);
             this.cantidadBox.Name = "cantidadBox";
             this.cantidadBox.Size = new System.Drawing.Size(113, 20);
             this.cantidadBox.TabIndex = 8;
@@ -265,7 +279,7 @@ namespace Control_de_Gastos
             this.registrarGasto.BackColor = System.Drawing.Color.DarkGreen;
             this.registrarGasto.Font = new System.Drawing.Font("Gill Sans MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registrarGasto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registrarGasto.Location = new System.Drawing.Point(737, 310);
+            this.registrarGasto.Location = new System.Drawing.Point(773, 268);
             this.registrarGasto.Name = "registrarGasto";
             this.registrarGasto.Size = new System.Drawing.Size(178, 39);
             this.registrarGasto.TabIndex = 9;
@@ -277,7 +291,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoTipoGastoImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoTipoGastoImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoTipoGastoImage.Image")));
-            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(31, 227);
+            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(16, 191);
             this.agregarNuevoTipoGastoImage.Name = "agregarNuevoTipoGastoImage";
             this.agregarNuevoTipoGastoImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoTipoGastoImage.TabIndex = 12;
@@ -288,7 +302,7 @@ namespace Control_de_Gastos
             // 
             this.nuevoTipoGastoLabel.AutoSize = true;
             this.nuevoTipoGastoLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(31, 209);
+            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(16, 173);
             this.nuevoTipoGastoLabel.Name = "nuevoTipoGastoLabel";
             this.nuevoTipoGastoLabel.Size = new System.Drawing.Size(154, 15);
             this.nuevoTipoGastoLabel.TabIndex = 13;
@@ -298,7 +312,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioLabel.AutoSize = true;
             this.agregarNuevoComercioLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(380, 209);
+            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(365, 173);
             this.agregarNuevoComercioLabel.Name = "agregarNuevoComercioLabel";
             this.agregarNuevoComercioLabel.Size = new System.Drawing.Size(136, 15);
             this.agregarNuevoComercioLabel.TabIndex = 14;
@@ -308,7 +322,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoComercioImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoComercioImage.Image")));
-            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(380, 227);
+            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(365, 191);
             this.agregarNuevoComercioImage.Name = "agregarNuevoComercioImage";
             this.agregarNuevoComercioImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoComercioImage.TabIndex = 15;
@@ -319,9 +333,9 @@ namespace Control_de_Gastos
             // 
             this.panel1.Controls.Add(this.dolaresRadioButton);
             this.panel1.Controls.Add(this.colonesRadioButton);
-            this.panel1.Location = new System.Drawing.Point(791, 154);
+            this.panel1.Location = new System.Drawing.Point(741, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 30);
+            this.panel1.Size = new System.Drawing.Size(230, 32);
             this.panel1.TabIndex = 18;
             // 
             // dolaresRadioButton
@@ -339,6 +353,7 @@ namespace Control_de_Gastos
             // colonesRadioButton
             // 
             this.colonesRadioButton.AutoSize = true;
+            this.colonesRadioButton.Checked = true;
             this.colonesRadioButton.Location = new System.Drawing.Point(21, 4);
             this.colonesRadioButton.Name = "colonesRadioButton";
             this.colonesRadioButton.Size = new System.Drawing.Size(63, 17);
@@ -354,7 +369,7 @@ namespace Control_de_Gastos
             this.tipoCambioPanel.Controls.Add(this.totalLabel);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioTextBox);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioLabel);
-            this.tipoCambioPanel.Location = new System.Drawing.Point(691, 216);
+            this.tipoCambioPanel.Location = new System.Drawing.Point(672, 173);
             this.tipoCambioPanel.Name = "tipoCambioPanel";
             this.tipoCambioPanel.Size = new System.Drawing.Size(330, 71);
             this.tipoCambioPanel.TabIndex = 21;
@@ -398,7 +413,7 @@ namespace Control_de_Gastos
             // tipoGastoComboBox
             // 
             this.tipoGastoComboBox.FormattingEnabled = true;
-            this.tipoGastoComboBox.Location = new System.Drawing.Point(168, 111);
+            this.tipoGastoComboBox.Location = new System.Drawing.Point(156, 118);
             this.tipoGastoComboBox.Name = "tipoGastoComboBox";
             this.tipoGastoComboBox.Size = new System.Drawing.Size(121, 21);
             this.tipoGastoComboBox.TabIndex = 22;
@@ -406,60 +421,63 @@ namespace Control_de_Gastos
             // comercioComboBox
             // 
             this.comercioComboBox.FormattingEnabled = true;
-            this.comercioComboBox.Location = new System.Drawing.Point(482, 111);
+            this.comercioComboBox.Location = new System.Drawing.Point(471, 118);
             this.comercioComboBox.Name = "comercioComboBox";
             this.comercioComboBox.Size = new System.Drawing.Size(121, 21);
             this.comercioComboBox.TabIndex = 23;
             // 
-            // comercioListBox
+            // panelPrincipal
             // 
-            this.comercioListBox.DataSource = this.comerciosBindingSource;
-            this.comercioListBox.DisplayMember = "nombreComercio";
-            this.comercioListBox.FormattingEnabled = true;
-            this.comercioListBox.Location = new System.Drawing.Point(482, 154);
-            this.comercioListBox.Name = "comercioListBox";
-            this.comercioListBox.Size = new System.Drawing.Size(121, 21);
-            this.comercioListBox.TabIndex = 11;
+            this.panelPrincipal.Controls.Add(this.comercioComboBox);
+            this.panelPrincipal.Controls.Add(this.tipoCambioPanel);
+            this.panelPrincipal.Controls.Add(this.tipoGastoComboBox);
+            this.panelPrincipal.Controls.Add(this.registrarGasto);
+            this.panelPrincipal.Controls.Add(this.panel1);
+            this.panelPrincipal.Controls.Add(this.agregarNuevoComercioImage);
+            this.panelPrincipal.Controls.Add(this.agregarNuevoComercioLabel);
+            this.panelPrincipal.Controls.Add(this.nuevoTipoGastoLabel);
+            this.panelPrincipal.Controls.Add(this.agregarNuevoTipoGastoImage);
+            this.panelPrincipal.Controls.Add(this.cantidadBox);
+            this.panelPrincipal.Controls.Add(this.cantidadLabel);
+            this.panelPrincipal.Controls.Add(this.comercioLabel);
+            this.panelPrincipal.Controls.Add(this.tipoGastoLabel);
+            this.panelPrincipal.Controls.Add(this.fechaLabel);
+            this.panelPrincipal.Controls.Add(this.fechaPicker);
+            this.panelPrincipal.Location = new System.Drawing.Point(16, 39);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(1005, 310);
+            this.panelPrincipal.TabIndex = 24;
             // 
-            // tipoGastoListBox
+            // panelReporte
             // 
-            this.tipoGastoListBox.DataSource = this.tiposGastoBindingSource1;
-            this.tipoGastoListBox.DisplayMember = "tipo";
-            this.tipoGastoListBox.FormattingEnabled = true;
-            this.tipoGastoListBox.Location = new System.Drawing.Point(168, 157);
-            this.tipoGastoListBox.Name = "tipoGastoListBox";
-            this.tipoGastoListBox.Size = new System.Drawing.Size(121, 21);
-            this.tipoGastoListBox.TabIndex = 10;
+            this.panelReporte.Controls.Add(this.reporteGridView);
+            this.panelReporte.Location = new System.Drawing.Point(6, 30);
+            this.panelReporte.Name = "panelReporte";
+            this.panelReporte.Size = new System.Drawing.Size(1014, 318);
+            this.panelReporte.TabIndex = 25;
             // 
-            // Form1
+            // reporteGridView
+            // 
+            this.reporteGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.reporteGridView.Location = new System.Drawing.Point(10, 9);
+            this.reporteGridView.Name = "reporteGridView";
+            this.reporteGridView.Size = new System.Drawing.Size(919, 274);
+            this.reporteGridView.TabIndex = 0;
+            // 
+            // Gastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1021, 361);
-            this.Controls.Add(this.comercioComboBox);
-            this.Controls.Add(this.tipoGastoComboBox);
-            this.Controls.Add(this.tipoCambioPanel);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.agregarNuevoComercioImage);
-            this.Controls.Add(this.agregarNuevoComercioLabel);
-            this.Controls.Add(this.nuevoTipoGastoLabel);
-            this.Controls.Add(this.agregarNuevoTipoGastoImage);
-            this.Controls.Add(this.comercioListBox);
-            this.Controls.Add(this.tipoGastoListBox);
-            this.Controls.Add(this.registrarGasto);
-            this.Controls.Add(this.cantidadBox);
-            this.Controls.Add(this.cantidadLabel);
-            this.Controls.Add(this.comercioLabel);
-            this.Controls.Add(this.tipoGastoLabel);
-            this.Controls.Add(this.fechaLabel);
-            this.Controls.Add(this.fechaPicker);
+            this.Controls.Add(this.panelReporte);
+            this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Gastos";
             this.Text = "Gastos Mensuales";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -480,6 +498,10 @@ namespace Control_de_Gastos
             this.panel1.PerformLayout();
             this.tipoCambioPanel.ResumeLayout(false);
             this.tipoCambioPanel.PerformLayout();
+            this.panelPrincipal.ResumeLayout(false);
+            this.panelPrincipal.PerformLayout();
+            this.panelReporte.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,8 +549,10 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.ComboBox tipoGastoComboBox;
         private System.Windows.Forms.ComboBox comercioComboBox;
-        private System.Windows.Forms.ComboBox comercioListBox;
-        private System.Windows.Forms.ComboBox tipoGastoListBox;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Panel panelPrincipal;
+        private System.Windows.Forms.Panel panelReporte;
+        private System.Windows.Forms.DataGridView reporteGridView;
     }
 }
 

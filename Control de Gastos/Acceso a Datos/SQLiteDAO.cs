@@ -72,6 +72,43 @@ namespace Control_de_Gastos
         }
         #endregion
 
+        public DataTable listarGastosReporte()
+        {
+            DataTable dt = new DataTable();
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<dynamic>("select * from GastoUnitarioTable", new DynamicParameters());
+                foreach (var row in output)
+                {
+                    var fields = row as IDictionary<string, object>;
+                }
+                return dt;
+            }
+        }
+        public List<string> listarGastos()
+        {
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output= cnn.Query<string>("select id from GastoUnitarioTable", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public void registrarGasto(string fecha,string tipo, string comercio, decimal monto)
+        {
+
+            tipo = char.ToUpper(tipo[0]) + tipo.Substring(1);
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var cuenta = listarGastos().Count + 1;
+                string sql = "insert into GastoUnitarioTable values (" + cuenta + ",'" + fecha + "','" + tipo + "','" + comercio + "'," + monto + ")";
+                SQLiteConnection conn = new SQLiteConnection(LoadConnectionString());
+                conn.Open();
+                SQLiteCommand command1 = new SQLiteCommand(sql, conn);
+                command1.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
         private static string LoadConnectionString(string id = "SQLite")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

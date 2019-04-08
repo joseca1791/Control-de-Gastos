@@ -21,5 +21,15 @@ namespace Control_de_Gastos.Controllers
         {
             return sqlitedao.listarTiposGasto();
         }
+
+        public void registrarGasto(string fecha, string tipo, string comercio, decimal monto)
+        {
+            sqlitedao.registrarGasto(fecha,tipo,comercio,monto);
+        }
+
+        public void generarReporte()
+        {
+            sqlitedao.listarGastosReporte();
+        }
     }
 }
