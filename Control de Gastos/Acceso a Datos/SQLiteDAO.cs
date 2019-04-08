@@ -74,13 +74,14 @@ namespace Control_de_Gastos
 
         public DataTable listarGastosReporte()
         {
-            DataTable dt = new DataTable();
+            var dt = new DataTable();
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<dynamic>("select * from GastoUnitarioTable", new DynamicParameters());
                 foreach (var row in output)
                 {
                     var fields = row as IDictionary<string, object>;
+                    var element = fields["id"];
                 }
                 return dt;
             }
