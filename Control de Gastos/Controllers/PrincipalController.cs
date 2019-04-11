@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,9 @@ namespace Control_de_Gastos.Controllers
             sqlitedao.registrarGasto(fecha,tipo,comercio,monto);
         }
 
-        public void generarReporte()
+        public DataTable generarReporte()
         {
-            sqlitedao.listarGastosReporte();
+            return sqlitedao.listarGastosReporte();
         }
     }
 }

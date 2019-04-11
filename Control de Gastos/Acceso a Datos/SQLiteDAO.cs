@@ -75,16 +75,30 @@ namespace Control_de_Gastos
         public DataTable listarGastosReporte()
         {
             var dt = new DataTable();
+            dt.Columns.Add("Fecha");
+            dt.Columns.Add("Tipo de Gasto");
+            dt.Columns.Add("Lugar");
+            dt.Columns.Add("Monto");
+            DataRow dr = null;
+            IDictionary<string, object> fields;
+
+
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<dynamic>("select * from GastoUnitarioTable", new DynamicParameters());
+                var output = cnn.Query("select * from GastoUnitarioTable").ToList();
                 foreach (var row in output)
                 {
-                    var fields = row as IDictionary<string, object>;
-                    var element = fields["id"];
+                    dr = dt.NewRow();
+                    fields = row as IDictionary<string, object>;
+                    dr["Fecha"] = fields["Fecha"];
+                    dr["Tipo de Gasto"] = fields["TipoGasto"];
+                    dr["Lugar"] = fields["Lugar"];
+                    dr["Monto"] = fields["Monto"];
+                    dt.Rows.Add(dr);
                 }
-                return dt;
             }
+            dt.AcceptChanges();
+            return dt;
         }
         public List<string> listarGastos()
         {

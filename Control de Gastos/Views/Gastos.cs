@@ -103,7 +103,7 @@ namespace Control_de_Gastos
 
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            principalController.generarReporte();
+            reporteGridView.DataSource = principalController.generarReporte();
             panelPrincipal.Hide();
             panelReporte.Show();
 
@@ -160,6 +160,7 @@ namespace Control_de_Gastos
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            panelReporte.Hide();
             panelPrincipal.Show();
         }
     }
