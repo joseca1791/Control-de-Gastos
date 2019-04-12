@@ -93,7 +93,7 @@ namespace Control_de_Gastos
                     dr["Fecha"] = fields["Fecha"];
                     dr["Tipo de Gasto"] = fields["TipoGasto"];
                     dr["Lugar"] = fields["Lugar"];
-                    dr["Monto"] = fields["Monto"];
+                    dr["Monto"] = "₡ "+fields["Monto"];
                     dt.Rows.Add(dr);
                 }
             }

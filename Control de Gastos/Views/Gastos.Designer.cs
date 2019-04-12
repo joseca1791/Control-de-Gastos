@@ -67,7 +67,7 @@ namespace Control_de_Gastos
             this.dolaresRadioButton = new System.Windows.Forms.RadioButton();
             this.colonesRadioButton = new System.Windows.Forms.RadioButton();
             this.tipoCambioPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.totalDolaresTextBox = new System.Windows.Forms.TextBox();
             this.totalLabel = new System.Windows.Forms.Label();
             this.tipoCambioTextBox = new System.Windows.Forms.TextBox();
             this.tipoCambioLabel = new System.Windows.Forms.Label();
@@ -121,7 +121,7 @@ namespace Control_de_Gastos
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Principal";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -129,14 +129,14 @@ namespace Control_de_Gastos
             // 
             this.digitarGastosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("digitarGastosToolStripMenuItem.Image")));
             this.digitarGastosToolStripMenuItem.Name = "digitarGastosToolStripMenuItem";
-            this.digitarGastosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.digitarGastosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.digitarGastosToolStripMenuItem.Text = "Editar Gastos";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -152,7 +152,7 @@ namespace Control_de_Gastos
             // 
             this.generarReporteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generarReporteToolStripMenuItem.Image")));
             this.generarReporteToolStripMenuItem.Name = "generarReporteToolStripMenuItem";
-            this.generarReporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.generarReporteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.generarReporteToolStripMenuItem.Text = "Generar Reporte";
             this.generarReporteToolStripMenuItem.Click += new System.EventHandler(this.generarReporteToolStripMenuItem_Click);
             // 
@@ -173,7 +173,7 @@ namespace Control_de_Gastos
             // fechaPicker
             // 
             this.fechaPicker.Location = new System.Drawing.Point(109, 20);
-            this.fechaPicker.MaxDate = new System.DateTime(2019, 3, 16, 0, 0, 0, 0);
+            this.fechaPicker.MaxDate = DateTime.Today;
             this.fechaPicker.Name = "fechaPicker";
             this.fechaPicker.Size = new System.Drawing.Size(200, 20);
             this.fechaPicker.TabIndex = 1;
@@ -216,9 +216,9 @@ namespace Control_de_Gastos
             this.cantidadLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cantidadLabel.Location = new System.Drawing.Point(672, 119);
             this.cantidadLabel.Name = "cantidadLabel";
-            this.cantidadLabel.Size = new System.Drawing.Size(86, 20);
+            this.cantidadLabel.Size = new System.Drawing.Size(61, 20);
             this.cantidadLabel.TabIndex = 5;
-            this.cantidadLabel.Text = "Cantidad";
+            this.cantidadLabel.Text = "Monto";
             // 
             // tiposBindingSource1
             // 
@@ -269,10 +269,12 @@ namespace Control_de_Gastos
             // 
             // cantidadBox
             // 
+            this.cantidadBox.DecimalPlaces = 2;
             this.cantidadBox.Location = new System.Drawing.Point(676, 154);
             this.cantidadBox.Name = "cantidadBox";
             this.cantidadBox.Size = new System.Drawing.Size(113, 20);
             this.cantidadBox.TabIndex = 8;
+            this.cantidadBox.ValueChanged += new System.EventHandler(this.cantidadBox_ValueChanged);
             // 
             // registrarGasto
             // 
@@ -365,7 +367,7 @@ namespace Control_de_Gastos
             // 
             // tipoCambioPanel
             // 
-            this.tipoCambioPanel.Controls.Add(this.textBox1);
+            this.tipoCambioPanel.Controls.Add(this.totalDolaresTextBox);
             this.tipoCambioPanel.Controls.Add(this.totalLabel);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioTextBox);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioLabel);
@@ -374,13 +376,13 @@ namespace Control_de_Gastos
             this.tipoCambioPanel.Size = new System.Drawing.Size(330, 71);
             this.tipoCambioPanel.TabIndex = 21;
             // 
-            // textBox1
+            // totalDolaresTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(147, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.totalDolaresTextBox.Enabled = false;
+            this.totalDolaresTextBox.Location = new System.Drawing.Point(147, 39);
+            this.totalDolaresTextBox.Name = "totalDolaresTextBox";
+            this.totalDolaresTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalDolaresTextBox.TabIndex = 3;
             // 
             // totalLabel
             // 
@@ -399,6 +401,7 @@ namespace Control_de_Gastos
             this.tipoCambioTextBox.Name = "tipoCambioTextBox";
             this.tipoCambioTextBox.Size = new System.Drawing.Size(100, 20);
             this.tipoCambioTextBox.TabIndex = 1;
+            this.tipoCambioTextBox.TextChanged += new System.EventHandler(this.tipoCambioTextBox_TextChanged);
             // 
             // tipoCambioLabel
             // 
@@ -458,11 +461,24 @@ namespace Control_de_Gastos
             // 
             // reporteGridView
             // 
+            this.reporteGridView.AllowUserToAddRows = false;
+            this.reporteGridView.AllowUserToDeleteRows = false;
+            this.reporteGridView.AllowUserToResizeColumns = false;
+            this.reporteGridView.AllowUserToResizeRows = false;
+            this.reporteGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.reporteGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.reporteGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.reporteGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.reporteGridView.Location = new System.Drawing.Point(10, 9);
             this.reporteGridView.Name = "reporteGridView";
-            this.reporteGridView.Size = new System.Drawing.Size(919, 274);
+            this.reporteGridView.ReadOnly = true;
+            this.reporteGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.reporteGridView.RowTemplate.ReadOnly = true;
+            this.reporteGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.reporteGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.reporteGridView.Size = new System.Drawing.Size(767, 274);
             this.reporteGridView.TabIndex = 0;
+            this.reporteGridView.TabStop = false;
             // 
             // Gastos
             // 
@@ -545,7 +561,7 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Panel tipoCambioPanel;
         private System.Windows.Forms.TextBox tipoCambioTextBox;
         private System.Windows.Forms.Label tipoCambioLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox totalDolaresTextBox;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.ComboBox tipoGastoComboBox;
         private System.Windows.Forms.ComboBox comercioComboBox;

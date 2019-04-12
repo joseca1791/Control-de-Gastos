@@ -67,29 +67,24 @@ namespace Control_de_Gastos
 
         private void registrarGasto_Click(object sender, EventArgs e)
         {
-            if (cantidadBox.Value != 1) { 
+            if (cantidadBox.Value != cantidadBox.Minimum || dolaresRadioButton.Checked) { 
             String fecha = fechaPicker.Value.ToShortDateString();
             var tipoGasto = tipoGastoComboBox.GetItemText(tipoGastoComboBox.SelectedItem);
             var comercio = comercioComboBox.GetItemText(comercioComboBox.SelectedItem);
             var cantidad = cantidadBox.Value;
+            cantidad=decimal.Round(cantidad, 2);
                 if (dolaresRadioButton.Checked)
                 {
-                    cantidad = decimal.Parse(textBox1.Text);
-                    ingresarGasto(fecha, tipoGasto, comercio, cantidad);
+                    cantidad = decimal.Parse(totalDolaresTextBox.Text);
+                    decimal.Round(cantidad, 2);
                 }
                 ingresarGasto(fecha,tipoGasto, comercio, cantidad);
             }
-            else { MessageBox.Show("No ingresó una cantidad para el gasto", "Error!", MessageBoxButtons.OK,MessageBoxIcon.Error); }
+            else { MessageBox.Show("No ingresó una cantidad válida para el gasto", "Error!", MessageBoxButtons.OK,MessageBoxIcon.Error); }
 
         }
 
         private void ingresarGasto(String fecha,string tipoGasto, string comercio, decimal cantidad) {
-            //var connectionString = "Data Source=localhost;Initial Catalog=Gastos;Integrated Security=True";
-            //using (SqlConnection connection = new SqlConnection(connectionString)) {
-            //    SqlCommand command = new SqlCommand(@"Insert into dbo.GastoUnitarioTable values ('"+fecha + "','"+ tipoGasto + "','"+ comercio + "','"+ cantidad+"')",connection);
-            //    command.Connection.Open();
-            //    command.ExecuteNonQuery();
-            //}
             principalController.registrarGasto(fecha,tipoGasto,comercio,cantidad);
             tipoGastoComboBox.SelectedIndex = 0;
             comercioComboBox.SelectedIndex = 0;
@@ -104,6 +99,7 @@ namespace Control_de_Gastos
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             reporteGridView.DataSource = principalController.generarReporte();
+            reporteGridView.Columns[2].Width = 407;
             panelPrincipal.Hide();
             panelReporte.Show();
 
@@ -127,8 +123,9 @@ namespace Control_de_Gastos
         {
             if (dolaresRadioButton.Checked) { 
             tipoCambioPanel.Show();
-                DateTime fechaPrueba = fechaPicker.Value;
-                await callWebServiceAsync(fechaPrueba.ToString("dd/MM/yyyy"));
+            DateTime fechaPrueba = fechaPicker.Value;
+            await callWebServiceAsync(fechaPrueba.ToString("dd/MM/yyyy"));
+            totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
             }
         }
 
@@ -162,6 +159,21 @@ namespace Control_de_Gastos
         {
             panelReporte.Hide();
             panelPrincipal.Show();
+        }
+
+        private void cantidadBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (dolaresRadioButton.Checked) { 
+            totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
+            }
+        }
+
+        private void tipoCambioTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (dolaresRadioButton.Checked)
+            {
+                totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
+            }
         }
     }
 }
