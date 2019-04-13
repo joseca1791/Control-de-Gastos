@@ -115,7 +115,7 @@ namespace Control_de_Gastos
             tipo = char.ToUpper(tipo[0]) + tipo.Substring(1);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var cuenta = listarGastos().Count + 1;
+                var cuenta = int.Parse(listarGastos().Last()) + 1;
                 string sql = "insert into GastoUnitarioTable values (" + cuenta + ",'" + fecha + "','" + tipo + "','" + comercio + "'," + monto + ")";
                 SQLiteConnection conn = new SQLiteConnection(LoadConnectionString());
                 conn.Open();

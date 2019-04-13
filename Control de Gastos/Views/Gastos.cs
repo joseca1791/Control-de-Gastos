@@ -52,15 +52,6 @@ namespace Control_de_Gastos
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gastosDataSet3.Comercios' table. You can move, or remove it, as needed.
-            this.comerciosTableAdapter.Fill(this.gastosDataSet3.Comercios);
-            this.comerciosBindingSource.Sort = "nombreComercio";
-            // TODO: This line of code loads data into the 'gastosDataSet2.TiposGasto' table. You can move, or remove it, as needed.
-            this.tiposGastoTableAdapter1.Fill(this.gastosDataSet2.TiposGasto);
-            this.tiposGastoBindingSource1.Sort = "tipo";
-            // TODO: This line of code loads data into the 'gastosDataSet1.TiposGasto' table. You can move, or remove it, as needed.
-            this.tiposGastoTableAdapter.Fill(this.gastosDataSet1.TiposGasto);
-            // TODO: This line of code loads data into the 'gastosDataSet.Tipos' table. You can move, or remove it, as needed.
             cantidadBox.Maximum = 1000000000000000000;
             cantidadBox.Minimum = 1;
         }
