@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,16 @@ namespace Control_de_Gastos.Controllers
         public List<string> llenarTipodeGasto(Form form)
         {
             return sqlitedao.listarTiposGasto();
+        }
+
+        public void registrarGasto(string fecha, string tipo, string comercio, decimal monto)
+        {
+            sqlitedao.registrarGasto(fecha,tipo,comercio,monto);
+        }
+
+        public DataTable generarReporte()
+        {
+            return sqlitedao.listarGastosReporte();
         }
     }
 }

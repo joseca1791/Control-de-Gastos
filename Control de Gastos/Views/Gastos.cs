@@ -26,6 +26,7 @@ namespace Control_de_Gastos
             tipoCambioPanel.Hide();
             fillTipoGastoCombobox();
             fillComercioCombobox();
+            panelReporte.Hide();
         }
 
 
@@ -52,37 +53,33 @@ namespace Control_de_Gastos
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gastosDataSet3.Comercios' table. You can move, or remove it, as needed.
-            this.comerciosTableAdapter.Fill(this.gastosDataSet3.Comercios);
-            this.comerciosBindingSource.Sort = "nombreComercio";
-            // TODO: This line of code loads data into the 'gastosDataSet2.TiposGasto' table. You can move, or remove it, as needed.
-            this.tiposGastoTableAdapter1.Fill(this.gastosDataSet2.TiposGasto);
-            this.tiposGastoBindingSource1.Sort = "tipo";
-            // TODO: This line of code loads data into the 'gastosDataSet1.TiposGasto' table. You can move, or remove it, as needed.
-            this.tiposGastoTableAdapter.Fill(this.gastosDataSet1.TiposGasto);
-            // TODO: This line of code loads data into the 'gastosDataSet.Tipos' table. You can move, or remove it, as needed.
             cantidadBox.Maximum = 1000000000000000000;
             cantidadBox.Minimum = 1;
         }
 
         private void registrarGasto_Click(object sender, EventArgs e)
         {
+            if (cantidadBox.Value != cantidadBox.Minimum || dolaresRadioButton.Checked) { 
             String fecha = fechaPicker.Value.ToShortDateString();
-            var tipoGasto = tipoGastoListBox.GetItemText(tipoGastoListBox.SelectedItem);
-            var comercio = comercioListBox.GetItemText(comercioListBox.SelectedItem);
+            var tipoGasto = tipoGastoComboBox.GetItemText(tipoGastoComboBox.SelectedItem);
+            var comercio = comercioComboBox.GetItemText(comercioComboBox.SelectedItem);
             var cantidad = cantidadBox.Value;
-            ingresarGasto(fecha,tipoGasto, comercio, cantidad);
+            cantidad=decimal.Round(cantidad, 2);
+                if (dolaresRadioButton.Checked)
+                {
+                    cantidad = decimal.Parse(totalDolaresTextBox.Text);
+                    decimal.Round(cantidad, 2);
+                }
+                ingresarGasto(fecha,tipoGasto, comercio, cantidad);
+            }
+            else { MessageBox.Show("No ingresó una cantidad válida para el gasto", "Error!", MessageBoxButtons.OK,MessageBoxIcon.Error); }
+
         }
 
         private void ingresarGasto(String fecha,string tipoGasto, string comercio, decimal cantidad) {
-            //var connectionString = "Data Source=localhost;Initial Catalog=Gastos;Integrated Security=True";
-            //using (SqlConnection connection = new SqlConnection(connectionString)) {
-            //    SqlCommand command = new SqlCommand(@"Insert into dbo.GastoUnitarioTable values ('"+fecha + "','"+ tipoGasto + "','"+ comercio + "','"+ cantidad+"')",connection);
-            //    command.Connection.Open();
-            //    command.ExecuteNonQuery();
-            //}
-            tipoGastoListBox.SelectedIndex = 0;
-            comercioListBox.SelectedIndex = 0;
+            principalController.registrarGasto(fecha,tipoGasto,comercio,cantidad);
+            tipoGastoComboBox.SelectedIndex = 0;
+            comercioComboBox.SelectedIndex = 0;
             cantidadBox.Value = cantidadBox.Minimum;
         }
 
@@ -93,8 +90,11 @@ namespace Control_de_Gastos
 
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form2 = new Form();
-            form2.Show();
+            reporteGridView.DataSource = principalController.generarReporte();
+            reporteGridView.Columns[2].Width = 407;
+            panelPrincipal.Hide();
+            panelReporte.Show();
+
         }
 
         private void agregarNuevoTipoGastoImage_Click(object sender, EventArgs e)
@@ -115,8 +115,9 @@ namespace Control_de_Gastos
         {
             if (dolaresRadioButton.Checked) { 
             tipoCambioPanel.Show();
-                DateTime fechaPrueba = fechaPicker.Value;
-                await callWebServiceAsync(fechaPrueba.ToString("dd/MM/yyyy"));
+            DateTime fechaPrueba = fechaPicker.Value;
+            await callWebServiceAsync(fechaPrueba.ToString("dd/MM/yyyy"));
+            totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
             }
         }
 
@@ -143,6 +144,27 @@ namespace Control_de_Gastos
             if (dolaresRadioButton.Checked) {
                 DateTime fecha = fechaPicker.Value;
                 await callWebServiceAsync(fecha.ToString("dd/MM/yyyy"));
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panelReporte.Hide();
+            panelPrincipal.Show();
+        }
+
+        private void cantidadBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (dolaresRadioButton.Checked) { 
+            totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
+            }
+        }
+
+        private void tipoCambioTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (dolaresRadioButton.Checked)
+            {
+                totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
             }
         }
     }

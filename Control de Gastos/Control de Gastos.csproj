@@ -79,26 +79,6 @@
     <Compile Include="Views\Gastos.Designer.cs">
       <DependentUpon>Gastos.cs</DependentUpon>
     </Compile>
-    <Compile Include="GastosDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GastosDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GastosDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GastosDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GastosDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GastosDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GastosDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GastosDataSet3.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Views\NuevoComercio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,50 +115,6 @@
     <Content Include="Gastos.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="GastosDataSet.xsc">
-      <DependentUpon>GastosDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GastosDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GastosDataSet.xss">
-      <DependentUpon>GastosDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet1.xsc">
-      <DependentUpon>GastosDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GastosDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GastosDataSet1.xss">
-      <DependentUpon>GastosDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet2.xsc">
-      <DependentUpon>GastosDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GastosDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GastosDataSet2.xss">
-      <DependentUpon>GastosDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet3.xsc">
-      <DependentUpon>GastosDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="GastosDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GastosDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GastosDataSet3.xss">
-      <DependentUpon>GastosDataSet3.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">

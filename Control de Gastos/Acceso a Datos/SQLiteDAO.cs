@@ -72,6 +72,58 @@ namespace Control_de_Gastos
         }
         #endregion
 
+        public DataTable listarGastosReporte()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("Fecha");
+            dt.Columns.Add("Tipo de Gasto");
+            dt.Columns.Add("Lugar");
+            dt.Columns.Add("Monto");
+            DataRow dr = null;
+            IDictionary<string, object> fields;
+
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query("select * from GastoUnitarioTable").ToList();
+                foreach (var row in output)
+                {
+                    dr = dt.NewRow();
+                    fields = row as IDictionary<string, object>;
+                    dr["Fecha"] = fields["Fecha"];
+                    dr["Tipo de Gasto"] = fields["TipoGasto"];
+                    dr["Lugar"] = fields["Lugar"];
+                    dr["Monto"] = "₡ "+fields["Monto"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            dt.AcceptChanges();
+            return dt;
+        }
+        public List<string> listarGastos()
+        {
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output= cnn.Query<string>("select id from GastoUnitarioTable", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public void registrarGasto(string fecha,string tipo, string comercio, decimal monto)
+        {
+
+            tipo = char.ToUpper(tipo[0]) + tipo.Substring(1);
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var cuenta = int.Parse(listarGastos().Last()) + 1;
+                string sql = "insert into GastoUnitarioTable values (" + cuenta + ",'" + fecha + "','" + tipo + "','" + comercio + "'," + monto + ")";
+                SQLiteConnection conn = new SQLiteConnection(LoadConnectionString());
+                conn.Open();
+                SQLiteCommand command1 = new SQLiteCommand(sql, conn);
+                command1.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
         private static string LoadConnectionString(string id = "SQLite")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
