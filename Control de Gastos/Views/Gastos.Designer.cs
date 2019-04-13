@@ -30,7 +30,6 @@ namespace Control_de_Gastos
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gastos));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gastosTab = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,24 +38,11 @@ namespace Control_de_Gastos
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tiposBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gastosDataSet = new Control_de_Gastos.GastosDataSet();
-            this.tiposTableAdapter = new Control_de_Gastos.GastosDataSetTableAdapters.TiposTableAdapter();
             this.fechaPicker = new System.Windows.Forms.DateTimePicker();
             this.fechaLabel = new System.Windows.Forms.Label();
             this.tipoGastoLabel = new System.Windows.Forms.Label();
             this.comercioLabel = new System.Windows.Forms.Label();
             this.cantidadLabel = new System.Windows.Forms.Label();
-            this.tiposBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tiposGastoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gastosDataSet1 = new Control_de_Gastos.GastosDataSet1();
-            this.tiposGastoTableAdapter = new Control_de_Gastos.GastosDataSet1TableAdapters.TiposGastoTableAdapter();
-            this.gastosDataSet2 = new Control_de_Gastos.GastosDataSet2();
-            this.tiposGastoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tiposGastoTableAdapter1 = new Control_de_Gastos.GastosDataSet2TableAdapters.TiposGastoTableAdapter();
-            this.comerciosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gastosDataSet3 = new Control_de_Gastos.GastosDataSet3();
-            this.comerciosTableAdapter = new Control_de_Gastos.GastosDataSet3TableAdapters.ComerciosTableAdapter();
             this.cantidadBox = new System.Windows.Forms.NumericUpDown();
             this.registrarGasto = new System.Windows.Forms.Button();
             this.agregarNuevoTipoGastoImage = new System.Windows.Forms.PictureBox();
@@ -75,18 +61,8 @@ namespace Control_de_Gastos
             this.comercioComboBox = new System.Windows.Forms.ComboBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panelReporte = new System.Windows.Forms.Panel();
-            panelReporte.Hide();
             this.reporteGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposGastoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposGastoBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comerciosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).BeginInit();
@@ -121,7 +97,7 @@ namespace Control_de_Gastos
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.toolStripMenuItem1.Text = "Principal";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -129,14 +105,14 @@ namespace Control_de_Gastos
             // 
             this.digitarGastosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("digitarGastosToolStripMenuItem.Image")));
             this.digitarGastosToolStripMenuItem.Name = "digitarGastosToolStripMenuItem";
-            this.digitarGastosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.digitarGastosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.digitarGastosToolStripMenuItem.Text = "Editar Gastos";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -156,24 +132,10 @@ namespace Control_de_Gastos
             this.generarReporteToolStripMenuItem.Text = "Generar Reporte";
             this.generarReporteToolStripMenuItem.Click += new System.EventHandler(this.generarReporteToolStripMenuItem_Click);
             // 
-            // tiposBindingSource
-            // 
-            this.tiposBindingSource.DataMember = "Tipos";
-            this.tiposBindingSource.DataSource = this.gastosDataSet;
-            // 
-            // gastosDataSet
-            // 
-            this.gastosDataSet.DataSetName = "GastosDataSet";
-            this.gastosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tiposTableAdapter
-            // 
-            this.tiposTableAdapter.ClearBeforeFill = true;
-            // 
             // fechaPicker
             // 
             this.fechaPicker.Location = new System.Drawing.Point(109, 20);
-            this.fechaPicker.MaxDate = DateTime.Today;
+            this.fechaPicker.MaxDate = new System.DateTime(2019, 4, 13, 0, 0, 0, 0);
             this.fechaPicker.Name = "fechaPicker";
             this.fechaPicker.Size = new System.Drawing.Size(200, 20);
             this.fechaPicker.TabIndex = 1;
@@ -219,53 +181,6 @@ namespace Control_de_Gastos
             this.cantidadLabel.Size = new System.Drawing.Size(61, 20);
             this.cantidadLabel.TabIndex = 5;
             this.cantidadLabel.Text = "Monto";
-            // 
-            // tiposBindingSource1
-            // 
-            this.tiposBindingSource1.DataMember = "Tipos";
-            this.tiposBindingSource1.DataSource = this.gastosDataSet;
-            // 
-            // tiposGastoBindingSource
-            // 
-            this.tiposGastoBindingSource.DataMember = "TiposGasto";
-            this.tiposGastoBindingSource.DataSource = this.gastosDataSet1;
-            // 
-            // gastosDataSet1
-            // 
-            this.gastosDataSet1.DataSetName = "GastosDataSet1";
-            this.gastosDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tiposGastoTableAdapter
-            // 
-            this.tiposGastoTableAdapter.ClearBeforeFill = true;
-            // 
-            // gastosDataSet2
-            // 
-            this.gastosDataSet2.DataSetName = "GastosDataSet2";
-            this.gastosDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tiposGastoBindingSource1
-            // 
-            this.tiposGastoBindingSource1.DataMember = "TiposGasto";
-            this.tiposGastoBindingSource1.DataSource = this.gastosDataSet2;
-            // 
-            // tiposGastoTableAdapter1
-            // 
-            this.tiposGastoTableAdapter1.ClearBeforeFill = true;
-            // 
-            // comerciosBindingSource
-            // 
-            this.comerciosBindingSource.DataMember = "Comercios";
-            this.comerciosBindingSource.DataSource = this.gastosDataSet3;
-            // 
-            // gastosDataSet3
-            // 
-            this.gastosDataSet3.DataSetName = "GastosDataSet3";
-            this.gastosDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // comerciosTableAdapter
-            // 
-            this.comerciosTableAdapter.ClearBeforeFill = true;
             // 
             // cantidadBox
             // 
@@ -498,15 +413,6 @@ namespace Control_de_Gastos
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposGastoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiposGastoBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comerciosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).EndInit();
@@ -528,9 +434,6 @@ namespace Control_de_Gastos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem gastosTab;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
-        private GastosDataSet gastosDataSet;
-        private System.Windows.Forms.BindingSource tiposBindingSource;
-        private GastosDataSetTableAdapters.TiposTableAdapter tiposTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem digitarGastosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker fechaPicker;
@@ -538,16 +441,6 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Label tipoGastoLabel;
         private System.Windows.Forms.Label comercioLabel;
         private System.Windows.Forms.Label cantidadLabel;
-        private System.Windows.Forms.BindingSource tiposBindingSource1;
-        private GastosDataSet1 gastosDataSet1;
-        private System.Windows.Forms.BindingSource tiposGastoBindingSource;
-        private GastosDataSet1TableAdapters.TiposGastoTableAdapter tiposGastoTableAdapter;
-        private GastosDataSet2 gastosDataSet2;
-        private System.Windows.Forms.BindingSource tiposGastoBindingSource1;
-        private GastosDataSet2TableAdapters.TiposGastoTableAdapter tiposGastoTableAdapter1;
-        private GastosDataSet3 gastosDataSet3;
-        private System.Windows.Forms.BindingSource comerciosBindingSource;
-        private GastosDataSet3TableAdapters.ComerciosTableAdapter comerciosTableAdapter;
         private System.Windows.Forms.NumericUpDown cantidadBox;
         private System.Windows.Forms.Button registrarGasto;
         private System.Windows.Forms.ToolStripMenuItem generarReporteToolStripMenuItem;

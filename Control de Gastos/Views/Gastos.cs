@@ -26,6 +26,7 @@ namespace Control_de_Gastos
             tipoCambioPanel.Hide();
             fillTipoGastoCombobox();
             fillComercioCombobox();
+            panelReporte.Hide();
         }
 
 

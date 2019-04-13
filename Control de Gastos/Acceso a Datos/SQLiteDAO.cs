@@ -80,7 +80,7 @@ namespace Control_de_Gastos
             dt.Columns.Add("Lugar");
             dt.Columns.Add("Monto");
             DataRow dr = null;
-            IDictionary<string, object> fields;
+            IDictionary<string, decimal> fields;
 
 
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -89,7 +89,7 @@ namespace Control_de_Gastos
                 foreach (var row in output)
                 {
                     dr = dt.NewRow();
-                    fields = row as IDictionary<string, object>;
+                    fields = row as IDictionary<string, decimal>;
                     dr["Fecha"] = fields["Fecha"];
                     dr["Tipo de Gasto"] = fields["TipoGasto"];
                     dr["Lugar"] = fields["Lugar"];
