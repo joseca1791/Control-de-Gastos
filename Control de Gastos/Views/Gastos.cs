@@ -66,11 +66,12 @@ namespace Control_de_Gastos
             dt.Columns.Add(gastosPorIngresarGridView.Columns[1].ToString());
             dt.Columns.Add(gastosPorIngresarGridView.Columns[2].ToString());
             dt.Columns.Add(gastosPorIngresarGridView.Columns[3].ToString());
-            var cantidad = decimal.Round(cantidadBox.Value, 2);
-                var numeroDeGastosPorIngresar = gastosPorIngresarGridView.Rows.Count;
+            var numeroDeGastosPorIngresar = gastosPorIngresarGridView.Rows.Count;
             foreach (DataGridViewRow row in gastosPorIngresarGridView.Rows)
             {
-                if (dolaresRadioButton.Checked)
+                    decimal cantidad = decimal.Parse(row.Cells[3].Value.ToString());
+                    cantidad = decimal.Round(cantidad, 2);
+                    if (dolaresRadioButton.Checked)
                 {
                     cantidad = decimal.Parse(totalDolaresTextBox.Text);
                     decimal.Round(cantidad, 2);
@@ -78,13 +79,13 @@ namespace Control_de_Gastos
                 ingresarGasto(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(),cantidad);
             }
                 MessageBox.Show("Total de gastos agregados: "+numeroDeGastosPorIngresar,"Ingresar Gastos",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                reestablecerElementos();
             }
             else { MessageBox.Show("No ingresó ningún elemento en la lista!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void ingresarGasto(String fecha,string tipoGasto, string comercio, decimal cantidad) {
             principalController.registrarGasto(fecha,tipoGasto,comercio,cantidad);
-            reestablecerElementos();
         }
 
         private void reestablecerElementos()
