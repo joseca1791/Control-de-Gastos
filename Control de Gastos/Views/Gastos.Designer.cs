@@ -30,6 +30,7 @@ namespace Control_de_Gastos
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gastos));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gastosTab = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,7 @@ namespace Control_de_Gastos
             this.nuevoTipoGastoLabel = new System.Windows.Forms.Label();
             this.agregarNuevoComercioLabel = new System.Windows.Forms.Label();
             this.agregarNuevoComercioImage = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.botonesDivisasPanel = new System.Windows.Forms.Panel();
             this.dolaresRadioButton = new System.Windows.Forms.RadioButton();
             this.colonesRadioButton = new System.Windows.Forms.RadioButton();
             this.tipoCambioPanel = new System.Windows.Forms.Panel();
@@ -60,17 +61,28 @@ namespace Control_de_Gastos
             this.tipoGastoComboBox = new System.Windows.Forms.ComboBox();
             this.comercioComboBox = new System.Windows.Forms.ComboBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.limpiarGastosBoton = new System.Windows.Forms.Button();
+            this.agregarAListaBoton = new System.Windows.Forms.Button();
+            this.gastosPorIngresarGridView = new System.Windows.Forms.DataGridView();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReporte = new System.Windows.Forms.Panel();
             this.reporteGridView = new System.Windows.Forms.DataGridView();
+            this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.agregarNuevoTipoGastoTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.botonesDivisasPanel.SuspendLayout();
             this.tipoCambioPanel.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).BeginInit();
             this.panelReporte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -80,7 +92,7 @@ namespace Control_de_Gastos
             this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1021, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1063, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -134,7 +146,7 @@ namespace Control_de_Gastos
             // 
             // fechaPicker
             // 
-            this.fechaPicker.Location = new System.Drawing.Point(109, 20);
+            this.fechaPicker.Location = new System.Drawing.Point(80, 20);
             this.fechaPicker.MaxDate = new System.DateTime(2019, 4, 13, 0, 0, 0, 0);
             this.fechaPicker.Name = "fechaPicker";
             this.fechaPicker.Size = new System.Drawing.Size(200, 20);
@@ -146,7 +158,7 @@ namespace Control_de_Gastos
             // 
             this.fechaLabel.AutoSize = true;
             this.fechaLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaLabel.Location = new System.Drawing.Point(26, 21);
+            this.fechaLabel.Location = new System.Drawing.Point(15, 21);
             this.fechaLabel.Name = "fechaLabel";
             this.fechaLabel.Size = new System.Drawing.Size(59, 20);
             this.fechaLabel.TabIndex = 2;
@@ -176,7 +188,7 @@ namespace Control_de_Gastos
             // 
             this.cantidadLabel.AutoSize = true;
             this.cantidadLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadLabel.Location = new System.Drawing.Point(672, 119);
+            this.cantidadLabel.Location = new System.Drawing.Point(675, 144);
             this.cantidadLabel.Name = "cantidadLabel";
             this.cantidadLabel.Size = new System.Drawing.Size(61, 20);
             this.cantidadLabel.TabIndex = 5;
@@ -185,7 +197,7 @@ namespace Control_de_Gastos
             // cantidadBox
             // 
             this.cantidadBox.DecimalPlaces = 2;
-            this.cantidadBox.Location = new System.Drawing.Point(676, 154);
+            this.cantidadBox.Location = new System.Drawing.Point(886, 148);
             this.cantidadBox.Name = "cantidadBox";
             this.cantidadBox.Size = new System.Drawing.Size(113, 20);
             this.cantidadBox.TabIndex = 8;
@@ -194,13 +206,14 @@ namespace Control_de_Gastos
             // registrarGasto
             // 
             this.registrarGasto.BackColor = System.Drawing.Color.DarkGreen;
+            this.registrarGasto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registrarGasto.Font = new System.Drawing.Font("Gill Sans MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registrarGasto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registrarGasto.Location = new System.Drawing.Point(773, 268);
+            this.registrarGasto.Location = new System.Drawing.Point(794, 673);
             this.registrarGasto.Name = "registrarGasto";
-            this.registrarGasto.Size = new System.Drawing.Size(178, 39);
+            this.registrarGasto.Size = new System.Drawing.Size(208, 39);
             this.registrarGasto.TabIndex = 9;
-            this.registrarGasto.Text = "Registrar Gasto";
+            this.registrarGasto.Text = "Registrar Gastos";
             this.registrarGasto.UseVisualStyleBackColor = false;
             this.registrarGasto.Click += new System.EventHandler(this.registrarGasto_Click);
             // 
@@ -208,18 +221,19 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoTipoGastoImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoTipoGastoImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoTipoGastoImage.Image")));
-            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(16, 191);
+            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(179, 145);
             this.agregarNuevoTipoGastoImage.Name = "agregarNuevoTipoGastoImage";
             this.agregarNuevoTipoGastoImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoTipoGastoImage.TabIndex = 12;
             this.agregarNuevoTipoGastoImage.TabStop = false;
+            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoTipoGastoImage, "Agregar un buscar un tipo de gasto que no está en la lista");
             this.agregarNuevoTipoGastoImage.Click += new System.EventHandler(this.agregarNuevoTipoGastoImage_Click);
             // 
             // nuevoTipoGastoLabel
             // 
             this.nuevoTipoGastoLabel.AutoSize = true;
             this.nuevoTipoGastoLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(16, 173);
+            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(19, 153);
             this.nuevoTipoGastoLabel.Name = "nuevoTipoGastoLabel";
             this.nuevoTipoGastoLabel.Size = new System.Drawing.Size(154, 15);
             this.nuevoTipoGastoLabel.TabIndex = 13;
@@ -229,7 +243,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioLabel.AutoSize = true;
             this.agregarNuevoComercioLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(365, 173);
+            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(365, 148);
             this.agregarNuevoComercioLabel.Name = "agregarNuevoComercioLabel";
             this.agregarNuevoComercioLabel.Size = new System.Drawing.Size(136, 15);
             this.agregarNuevoComercioLabel.TabIndex = 14;
@@ -239,21 +253,22 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoComercioImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoComercioImage.Image")));
-            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(365, 191);
+            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(507, 144);
             this.agregarNuevoComercioImage.Name = "agregarNuevoComercioImage";
             this.agregarNuevoComercioImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoComercioImage.TabIndex = 15;
             this.agregarNuevoComercioImage.TabStop = false;
+            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoComercioImage, "Agregar o buscar un comercio que no está en la lista");
             this.agregarNuevoComercioImage.Click += new System.EventHandler(this.agregarNuevoComercioImage_Click);
             // 
-            // panel1
+            // botonesDivisasPanel
             // 
-            this.panel1.Controls.Add(this.dolaresRadioButton);
-            this.panel1.Controls.Add(this.colonesRadioButton);
-            this.panel1.Location = new System.Drawing.Point(741, 61);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 32);
-            this.panel1.TabIndex = 18;
+            this.botonesDivisasPanel.Controls.Add(this.dolaresRadioButton);
+            this.botonesDivisasPanel.Controls.Add(this.colonesRadioButton);
+            this.botonesDivisasPanel.Location = new System.Drawing.Point(741, 61);
+            this.botonesDivisasPanel.Name = "botonesDivisasPanel";
+            this.botonesDivisasPanel.Size = new System.Drawing.Size(230, 32);
+            this.botonesDivisasPanel.TabIndex = 18;
             // 
             // dolaresRadioButton
             // 
@@ -294,16 +309,16 @@ namespace Control_de_Gastos
             // totalDolaresTextBox
             // 
             this.totalDolaresTextBox.Enabled = false;
-            this.totalDolaresTextBox.Location = new System.Drawing.Point(147, 39);
+            this.totalDolaresTextBox.Location = new System.Drawing.Point(214, 39);
             this.totalDolaresTextBox.Name = "totalDolaresTextBox";
-            this.totalDolaresTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalDolaresTextBox.Size = new System.Drawing.Size(113, 20);
             this.totalDolaresTextBox.TabIndex = 3;
             // 
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
             this.totalLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLabel.Location = new System.Drawing.Point(88, 40);
+            this.totalLabel.Location = new System.Drawing.Point(3, 39);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(53, 20);
             this.totalLabel.TabIndex = 2;
@@ -312,9 +327,9 @@ namespace Control_de_Gastos
             // tipoCambioTextBox
             // 
             this.tipoCambioTextBox.Enabled = false;
-            this.tipoCambioTextBox.Location = new System.Drawing.Point(147, 9);
+            this.tipoCambioTextBox.Location = new System.Drawing.Point(214, 7);
             this.tipoCambioTextBox.Name = "tipoCambioTextBox";
-            this.tipoCambioTextBox.Size = new System.Drawing.Size(100, 20);
+            this.tipoCambioTextBox.Size = new System.Drawing.Size(113, 20);
             this.tipoCambioTextBox.TabIndex = 1;
             this.tipoCambioTextBox.TextChanged += new System.EventHandler(this.tipoCambioTextBox_TextChanged);
             // 
@@ -322,7 +337,7 @@ namespace Control_de_Gastos
             // 
             this.tipoCambioLabel.AutoSize = true;
             this.tipoCambioLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoCambioLabel.Location = new System.Drawing.Point(3, 11);
+            this.tipoCambioLabel.Location = new System.Drawing.Point(3, 7);
             this.tipoCambioLabel.Name = "tipoCambioLabel";
             this.tipoCambioLabel.Size = new System.Drawing.Size(138, 20);
             this.tipoCambioLabel.TabIndex = 0;
@@ -331,7 +346,7 @@ namespace Control_de_Gastos
             // tipoGastoComboBox
             // 
             this.tipoGastoComboBox.FormattingEnabled = true;
-            this.tipoGastoComboBox.Location = new System.Drawing.Point(156, 118);
+            this.tipoGastoComboBox.Location = new System.Drawing.Point(159, 118);
             this.tipoGastoComboBox.Name = "tipoGastoComboBox";
             this.tipoGastoComboBox.Size = new System.Drawing.Size(121, 21);
             this.tipoGastoComboBox.TabIndex = 22;
@@ -346,11 +361,14 @@ namespace Control_de_Gastos
             // 
             // panelPrincipal
             // 
+            this.panelPrincipal.Controls.Add(this.limpiarGastosBoton);
+            this.panelPrincipal.Controls.Add(this.agregarAListaBoton);
+            this.panelPrincipal.Controls.Add(this.gastosPorIngresarGridView);
             this.panelPrincipal.Controls.Add(this.comercioComboBox);
             this.panelPrincipal.Controls.Add(this.tipoCambioPanel);
             this.panelPrincipal.Controls.Add(this.tipoGastoComboBox);
             this.panelPrincipal.Controls.Add(this.registrarGasto);
-            this.panelPrincipal.Controls.Add(this.panel1);
+            this.panelPrincipal.Controls.Add(this.botonesDivisasPanel);
             this.panelPrincipal.Controls.Add(this.agregarNuevoComercioImage);
             this.panelPrincipal.Controls.Add(this.agregarNuevoComercioLabel);
             this.panelPrincipal.Controls.Add(this.nuevoTipoGastoLabel);
@@ -363,16 +381,93 @@ namespace Control_de_Gastos
             this.panelPrincipal.Controls.Add(this.fechaPicker);
             this.panelPrincipal.Location = new System.Drawing.Point(16, 39);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1005, 310);
+            this.panelPrincipal.Size = new System.Drawing.Size(1046, 728);
             this.panelPrincipal.TabIndex = 24;
+            // 
+            // limpiarGastosBoton
+            // 
+            this.limpiarGastosBoton.BackColor = System.Drawing.Color.DarkGreen;
+            this.limpiarGastosBoton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.limpiarGastosBoton.Font = new System.Drawing.Font("Gill Sans MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.limpiarGastosBoton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.limpiarGastosBoton.Location = new System.Drawing.Point(19, 673);
+            this.limpiarGastosBoton.Name = "limpiarGastosBoton";
+            this.limpiarGastosBoton.Size = new System.Drawing.Size(208, 39);
+            this.limpiarGastosBoton.TabIndex = 28;
+            this.limpiarGastosBoton.Text = "Limpiar Gastos";
+            this.limpiarGastosBoton.UseVisualStyleBackColor = false;
+            this.limpiarGastosBoton.Click += new System.EventHandler(this.limpiarGastosBoton_Click);
+            // 
+            // agregarAListaBoton
+            // 
+            this.agregarAListaBoton.BackColor = System.Drawing.Color.DarkGreen;
+            this.agregarAListaBoton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.agregarAListaBoton.Font = new System.Drawing.Font("Gill Sans MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agregarAListaBoton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.agregarAListaBoton.Location = new System.Drawing.Point(794, 275);
+            this.agregarAListaBoton.Name = "agregarAListaBoton";
+            this.agregarAListaBoton.Size = new System.Drawing.Size(208, 39);
+            this.agregarAListaBoton.TabIndex = 27;
+            this.agregarAListaBoton.Text = "Agregar a lista";
+            this.agregarAListaBoton.UseVisualStyleBackColor = false;
+            this.agregarAListaBoton.Click += new System.EventHandler(this.agregarAListaBoton_Click);
+            // 
+            // gastosPorIngresarGridView
+            // 
+            this.gastosPorIngresarGridView.AllowUserToAddRows = false;
+            this.gastosPorIngresarGridView.AllowUserToDeleteRows = false;
+            this.gastosPorIngresarGridView.AllowUserToOrderColumns = true;
+            this.gastosPorIngresarGridView.BackgroundColor = System.Drawing.Color.PapayaWhip;
+            this.gastosPorIngresarGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gastosPorIngresarGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fecha,
+            this.TipoGasto,
+            this.Lugar,
+            this.Monto});
+            this.gastosPorIngresarGridView.Location = new System.Drawing.Point(19, 336);
+            this.gastosPorIngresarGridView.Name = "gastosPorIngresarGridView";
+            this.gastosPorIngresarGridView.ReadOnly = true;
+            this.gastosPorIngresarGridView.Size = new System.Drawing.Size(983, 331);
+            this.gastosPorIngresarGridView.TabIndex = 26;
+            // 
+            // Fecha
+            // 
+            this.Fecha.Frozen = true;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // TipoGasto
+            // 
+            this.TipoGasto.Frozen = true;
+            this.TipoGasto.HeaderText = "Tipo de Gasto";
+            this.TipoGasto.Name = "TipoGasto";
+            this.TipoGasto.ReadOnly = true;
+            this.TipoGasto.Width = 250;
+            // 
+            // Lugar
+            // 
+            this.Lugar.Frozen = true;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            this.Lugar.Width = 500;
+            // 
+            // Monto
+            // 
+            this.Monto.Frozen = true;
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            this.Monto.ReadOnly = true;
             // 
             // panelReporte
             // 
             this.panelReporte.Controls.Add(this.reporteGridView);
-            this.panelReporte.Location = new System.Drawing.Point(6, 30);
+            this.panelReporte.Location = new System.Drawing.Point(16, 213);
             this.panelReporte.Name = "panelReporte";
-            this.panelReporte.Size = new System.Drawing.Size(1014, 318);
+            this.panelReporte.Size = new System.Drawing.Size(1046, 318);
             this.panelReporte.TabIndex = 25;
+            this.panelReporte.Visible = false;
             // 
             // reporteGridView
             // 
@@ -395,14 +490,19 @@ namespace Control_de_Gastos
             this.reporteGridView.TabIndex = 0;
             this.reporteGridView.TabStop = false;
             // 
+            // dataSetBindingSource
+            // 
+            this.dataSetBindingSource.DataSource = typeof(System.Data.DataSet);
+            this.dataSetBindingSource.Position = 0;
+            // 
             // Gastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1021, 361);
-            this.Controls.Add(this.panelReporte);
+            this.ClientSize = new System.Drawing.Size(1063, 779);
             this.Controls.Add(this.panelPrincipal);
+            this.Controls.Add(this.panelReporte);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -416,14 +516,16 @@ namespace Control_de_Gastos
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.botonesDivisasPanel.ResumeLayout(false);
+            this.botonesDivisasPanel.PerformLayout();
             this.tipoCambioPanel.ResumeLayout(false);
             this.tipoCambioPanel.PerformLayout();
             this.panelPrincipal.ResumeLayout(false);
             this.panelPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).EndInit();
             this.panelReporte.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +550,7 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Label nuevoTipoGastoLabel;
         private System.Windows.Forms.Label agregarNuevoComercioLabel;
         private System.Windows.Forms.PictureBox agregarNuevoComercioImage;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel botonesDivisasPanel;
         private System.Windows.Forms.RadioButton dolaresRadioButton;
         private System.Windows.Forms.RadioButton colonesRadioButton;
         private System.Windows.Forms.Panel tipoCambioPanel;
@@ -462,6 +564,15 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Panel panelReporte;
         private System.Windows.Forms.DataGridView reporteGridView;
+        private System.Windows.Forms.BindingSource dataSetBindingSource;
+        private System.Windows.Forms.DataGridView gastosPorIngresarGridView;
+        private System.Windows.Forms.Button agregarAListaBoton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoGasto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.Button limpiarGastosBoton;
+        private System.Windows.Forms.ToolTip agregarNuevoTipoGastoTooltip;
     }
 }
 

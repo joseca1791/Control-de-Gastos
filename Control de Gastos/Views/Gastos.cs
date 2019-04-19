@@ -27,6 +27,7 @@ namespace Control_de_Gastos
             fillTipoGastoCombobox();
             fillComercioCombobox();
             panelReporte.Hide();
+            fechaPicker.MaxDate = DateTime.Today;
         }
 
 
@@ -59,28 +60,39 @@ namespace Control_de_Gastos
 
         private void registrarGasto_Click(object sender, EventArgs e)
         {
-            if (cantidadBox.Value != cantidadBox.Minimum || dolaresRadioButton.Checked) { 
-            String fecha = fechaPicker.Value.ToShortDateString();
-            var tipoGasto = tipoGastoComboBox.GetItemText(tipoGastoComboBox.SelectedItem);
-            var comercio = comercioComboBox.GetItemText(comercioComboBox.SelectedItem);
-            var cantidad = cantidadBox.Value;
-            cantidad=decimal.Round(cantidad, 2);
+            if (gastosPorIngresarGridView.Rows.Count != 0) { 
+            DataTable dt = new DataTable();
+            dt.Columns.Add(gastosPorIngresarGridView.Columns[0].ToString());
+            dt.Columns.Add(gastosPorIngresarGridView.Columns[1].ToString());
+            dt.Columns.Add(gastosPorIngresarGridView.Columns[2].ToString());
+            dt.Columns.Add(gastosPorIngresarGridView.Columns[3].ToString());
+            var cantidad = decimal.Round(cantidadBox.Value, 2);
+                var numeroDeGastosPorIngresar = gastosPorIngresarGridView.Rows.Count;
+            foreach (DataGridViewRow row in gastosPorIngresarGridView.Rows)
+            {
                 if (dolaresRadioButton.Checked)
                 {
                     cantidad = decimal.Parse(totalDolaresTextBox.Text);
                     decimal.Round(cantidad, 2);
                 }
-                ingresarGasto(fecha,tipoGasto, comercio, cantidad);
+                ingresarGasto(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(),cantidad);
             }
-            else { MessageBox.Show("No ingresó una cantidad válida para el gasto", "Error!", MessageBoxButtons.OK,MessageBoxIcon.Error); }
-
+                MessageBox.Show("Total de gastos agregados: "+numeroDeGastosPorIngresar,"Ingresar Gastos",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else { MessageBox.Show("No ingresó ningún elemento en la lista!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void ingresarGasto(String fecha,string tipoGasto, string comercio, decimal cantidad) {
             principalController.registrarGasto(fecha,tipoGasto,comercio,cantidad);
+            reestablecerElementos();
+        }
+
+        private void reestablecerElementos()
+        {
             tipoGastoComboBox.SelectedIndex = 0;
             comercioComboBox.SelectedIndex = 0;
             cantidadBox.Value = cantidadBox.Minimum;
+            gastosPorIngresarGridView.Rows.Clear();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,6 +178,37 @@ namespace Control_de_Gastos
             {
                 totalDolaresTextBox.Text = (decimal.Parse(tipoCambioTextBox.Text) * cantidadBox.Value).ToString();
             }
+        }
+
+        private void agregarAListaBoton_Click(object sender, EventArgs e)
+        {
+            if (colonesRadioButton.Checked && cantidadBox.Value != 1)
+            {
+                gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToShortDateString(), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, cantidadBox.Value);
+                return;
+            }
+            else
+            {
+                if (colonesRadioButton.Checked) { 
+                MessageBox.Show("No ingresó una cantidad válida para el gasto", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                }
+            }
+            if (dolaresRadioButton.Checked && String.IsNullOrEmpty(totalDolaresTextBox.Text)==false)
+            {
+                gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToShortDateString(), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, totalDolaresTextBox.Text);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Aun se está recopilando el tipo de cambio, espere por favor.", "Tipo de Cambio - BCCR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private void limpiarGastosBoton_Click(object sender, EventArgs e)
+        {
+            gastosPorIngresarGridView.Rows.Clear();
         }
     }
 }
