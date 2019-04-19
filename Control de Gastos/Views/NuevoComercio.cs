@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
-using System.Data.SqlClient;
 
 namespace Control_de_Gastos
 {
@@ -31,8 +29,12 @@ namespace Control_de_Gastos
             comEncontradosComboBox.Items.Clear();
             if (resultados.Count == 0)
             {
+                comEncontradosComboBox.Text = "Ningún resultado encontrado";
+                comEncontradosComboBox.Enabled = false;
                 return;
             }
+            comEncontradosComboBox.Text = null;
+
             foreach (String resultado in resultados)
             {
                 comEncontradosComboBox.Items.Add(resultado);
@@ -43,10 +45,10 @@ namespace Control_de_Gastos
             lupaBuscarComercio.Left = 60;
         }
 
-        private void newExpenseTypePictureBox_Click(object sender, EventArgs e)
+        private void addCommerceTypePictureBox_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Esta seguro de que el tipo de gasto no está entre las opciones anteriores?",
-                "Agregar nuevo tipo de gasto", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Esta seguro de que el comercio no está entre las opciones anteriores?",
+    "Agregar nuevo comercio", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio();
                 nuevo.Show();

@@ -31,7 +31,7 @@ namespace Control_de_Gastos
         }
 
 
-        private void fillTipoGastoCombobox()
+        public void fillTipoGastoCombobox()
         {
             var list=principalController.llenarTipodeGasto(this);
             foreach(var element in list)
@@ -39,6 +39,11 @@ namespace Control_de_Gastos
                 tipoGastoComboBox.Items.Add(element);
             }
             tipoGastoComboBox.Text = list[0];
+        }
+
+        public void emptyTipoGastoCombobox()
+        {
+            tipoGastoComboBox.Items.Clear();
         }
 
         private void fillComercioCombobox()
@@ -112,7 +117,7 @@ namespace Control_de_Gastos
 
         private void agregarNuevoTipoGastoImage_Click(object sender, EventArgs e)
         {
-            nuevoTipoGasto = new NuevoTipoGasto();
+            nuevoTipoGasto = new NuevoTipoGasto(this);
             nuevoTipoGasto.StartPosition = FormStartPosition.CenterScreen;
             nuevoTipoGasto.Show();
         }

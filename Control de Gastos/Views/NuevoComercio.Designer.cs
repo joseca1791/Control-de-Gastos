@@ -65,6 +65,7 @@
             this.addCommerceTypePictureBox.Size = new System.Drawing.Size(51, 50);
             this.addCommerceTypePictureBox.TabIndex = 4;
             this.addCommerceTypePictureBox.TabStop = false;
+            this.addCommerceTypePictureBox.Click += new System.EventHandler(this.addCommerceTypePictureBox_Click);
             // 
             // lupaBuscarComercio
             // 

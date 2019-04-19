@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,10 +13,18 @@ namespace Control_de_Gastos
     public partial class NuevoTipoGasto : Form
     {
         SQLiteDAO sqlitedao = new SQLiteDAO();
+        Gastos original;
         public NuevoTipoGasto()
         {
             InitializeComponent();
             tipoGastoEncontradosComboBox.Enabled = false;
+        }
+
+        public NuevoTipoGasto(Gastos form)
+        {
+            InitializeComponent();
+            tipoGastoEncontradosComboBox.Enabled = false;
+            original = form;
         }
 
         private void lupaBuscarComercio_Click(object sender, EventArgs e)
@@ -25,7 +32,8 @@ namespace Control_de_Gastos
             populateListBox(sqlitedao.buscarTiposGasto(buscarTipoGastoTextbox.Text));
         }
 
-        private void populateListBox(List<String> resultados) {
+        private void populateListBox(List<String> resultados)
+        {
             tipoGastoEncontradosComboBox.Items.Clear();
             if (resultados.Count == 0)
             {
@@ -50,7 +58,7 @@ namespace Control_de_Gastos
             if (MessageBox.Show("¿Esta seguro de que el tipo de gasto no está entre las opciones anteriores?", 
                 "Agregar nuevo tipo de gasto", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio();
+                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio(original);
                 nuevo.Show();
                 nuevo.StartPosition = FormStartPosition.CenterScreen;
                 this.Close();

@@ -13,9 +13,17 @@ namespace Control_de_Gastos
     public partial class AgregarNuevoTipoGastoOComercio : Form
     {
         SQLiteDAO sqlitedao = new SQLiteDAO();
+        Gastos original;
+
         public AgregarNuevoTipoGastoOComercio()
         {
             InitializeComponent();
+        }
+
+        public AgregarNuevoTipoGastoOComercio(Gastos form)
+        {
+            InitializeComponent();
+            original = form;
         }
 
         private void closeAgrNueTipGasOComForm_Click(object sender, EventArgs e)
@@ -31,6 +39,8 @@ namespace Control_de_Gastos
                 try { 
                 sqlitedao.guardarTiposGasto(elementoTextBox.Text);
                     MessageBox.Show("Elemento agregado correctamente");
+                    original.emptyTipoGastoCombobox();
+                    original.fillTipoGastoCombobox();
                 this.Close();
                 }
                 catch {
