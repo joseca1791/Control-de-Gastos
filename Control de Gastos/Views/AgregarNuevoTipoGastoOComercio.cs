@@ -14,16 +14,18 @@ namespace Control_de_Gastos
     {
         SQLiteDAO sqlitedao = new SQLiteDAO();
         Gastos original;
+        int tipo;
 
         public AgregarNuevoTipoGastoOComercio()
         {
             InitializeComponent();
         }
 
-        public AgregarNuevoTipoGastoOComercio(Gastos form)
+        public AgregarNuevoTipoGastoOComercio(Gastos form,int _tipo)
         {
             InitializeComponent();
             original = form;
+            tipo = _tipo;
         }
 
         private void closeAgrNueTipGasOComForm_Click(object sender, EventArgs e)
@@ -36,12 +38,22 @@ namespace Control_de_Gastos
             if (MessageBox.Show("¿Esta seguro de que desea guardar este nuevo elemento?",
     "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                try { 
-                sqlitedao.guardarTiposGasto(elementoTextBox.Text);
-                    MessageBox.Show("Elemento agregado correctamente");
-                    original.emptyTipoGastoCombobox();
-                    original.fillTipoGastoCombobox();
-                this.Close();
+                try {
+                    if (tipo == 1) { 
+                        sqlitedao.guardarTiposGasto(elementoTextBox.Text);
+                        MessageBox.Show("Elemento agregado correctamente");
+                        original.emptyTipoGastoCombobox();
+                        original.fillTipoGastoCombobox();
+                        this.Close();
+                    }
+                    else
+                    {
+                        sqlitedao.guardarComercio(elementoTextBox.Text);
+                        MessageBox.Show("Elemento agregado correctamente");
+                        original.emptyComercioCombobox();
+                        original.fillComercioCombobox();
+                        this.Close();
+                    }
                 }
                 catch {
                     MessageBox.Show("Hubo un error en la insercion!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);

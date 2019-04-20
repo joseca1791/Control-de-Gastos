@@ -13,10 +13,18 @@ namespace Control_de_Gastos
     public partial class NuevoComercio : Form
     {
         SQLiteDAO sqlitedao = new SQLiteDAO();
+        Gastos original;
         public NuevoComercio()
         {
             InitializeComponent();
             comEncontradosComboBox.Enabled = false;
+        }
+
+        public NuevoComercio(Gastos form)
+        {
+            InitializeComponent();
+            comEncontradosComboBox.Enabled = false;
+            original = form;
         }
 
         private void lupaBuscarComercio_Click(object sender, EventArgs e)
@@ -48,9 +56,9 @@ namespace Control_de_Gastos
         private void addCommerceTypePictureBox_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Esta seguro de que el comercio no está entre las opciones anteriores?",
-    "Agregar nuevo comercio", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                "Agregar nuevo comercio", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio();
+                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio(original,2);
                 nuevo.Show();
                 nuevo.StartPosition = FormStartPosition.CenterScreen;
                 this.Close();

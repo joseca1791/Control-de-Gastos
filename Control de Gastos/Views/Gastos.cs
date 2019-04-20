@@ -46,7 +46,12 @@ namespace Control_de_Gastos
             tipoGastoComboBox.Items.Clear();
         }
 
-        private void fillComercioCombobox()
+        public void emptyComercioCombobox()
+        {
+            comercioComboBox.Items.Clear();
+        }
+
+        public void fillComercioCombobox()
         {
             var list = principalController.llenarComercios(this);
             foreach (var element in list)
@@ -124,7 +129,7 @@ namespace Control_de_Gastos
 
         private void agregarNuevoComercioImage_Click(object sender, EventArgs e)
         {
-            nuevoComerio = new NuevoComercio();
+            nuevoComerio = new NuevoComercio(this);
             nuevoComerio.StartPosition = FormStartPosition.CenterScreen;
             nuevoComerio.Show();
         }

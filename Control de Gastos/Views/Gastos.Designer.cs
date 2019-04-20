@@ -64,14 +64,14 @@ namespace Control_de_Gastos
             this.limpiarGastosBoton = new System.Windows.Forms.Button();
             this.agregarAListaBoton = new System.Windows.Forms.Button();
             this.gastosPorIngresarGridView = new System.Windows.Forms.DataGridView();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReporte = new System.Windows.Forms.Panel();
             this.reporteGridView = new System.Windows.Forms.DataGridView();
             this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.agregarNuevoTipoGastoTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).BeginInit();
@@ -415,9 +415,10 @@ namespace Control_de_Gastos
             // gastosPorIngresarGridView
             // 
             this.gastosPorIngresarGridView.AllowUserToAddRows = false;
-            this.gastosPorIngresarGridView.AllowUserToDeleteRows = false;
             this.gastosPorIngresarGridView.AllowUserToOrderColumns = true;
             this.gastosPorIngresarGridView.BackgroundColor = System.Drawing.Color.PapayaWhip;
+            this.gastosPorIngresarGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gastosPorIngresarGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.gastosPorIngresarGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gastosPorIngresarGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Fecha,
@@ -426,39 +427,8 @@ namespace Control_de_Gastos
             this.Monto});
             this.gastosPorIngresarGridView.Location = new System.Drawing.Point(19, 336);
             this.gastosPorIngresarGridView.Name = "gastosPorIngresarGridView";
-            this.gastosPorIngresarGridView.ReadOnly = true;
             this.gastosPorIngresarGridView.Size = new System.Drawing.Size(983, 331);
             this.gastosPorIngresarGridView.TabIndex = 26;
-            // 
-            // Fecha
-            // 
-            this.Fecha.Frozen = true;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // TipoGasto
-            // 
-            this.TipoGasto.Frozen = true;
-            this.TipoGasto.HeaderText = "Tipo de Gasto";
-            this.TipoGasto.Name = "TipoGasto";
-            this.TipoGasto.ReadOnly = true;
-            this.TipoGasto.Width = 250;
-            // 
-            // Lugar
-            // 
-            this.Lugar.Frozen = true;
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            this.Lugar.ReadOnly = true;
-            this.Lugar.Width = 500;
-            // 
-            // Monto
-            // 
-            this.Monto.Frozen = true;
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            this.Monto.ReadOnly = true;
             // 
             // panelReporte
             // 
@@ -494,6 +464,32 @@ namespace Control_de_Gastos
             // 
             this.dataSetBindingSource.DataSource = typeof(System.Data.DataSet);
             this.dataSetBindingSource.Position = 0;
+            // 
+            // Fecha
+            // 
+            this.Fecha.Frozen = true;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // TipoGasto
+            // 
+            this.TipoGasto.Frozen = true;
+            this.TipoGasto.HeaderText = "Tipo de Gasto";
+            this.TipoGasto.Name = "TipoGasto";
+            this.TipoGasto.Width = 250;
+            // 
+            // Lugar
+            // 
+            this.Lugar.Frozen = true;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.Width = 500;
+            // 
+            // Monto
+            // 
+            this.Monto.Frozen = true;
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
             // 
             // Gastos
             // 
@@ -567,12 +563,12 @@ namespace Control_de_Gastos
         private System.Windows.Forms.BindingSource dataSetBindingSource;
         private System.Windows.Forms.DataGridView gastosPorIngresarGridView;
         private System.Windows.Forms.Button agregarAListaBoton;
+        private System.Windows.Forms.Button limpiarGastosBoton;
+        private System.Windows.Forms.ToolTip agregarNuevoTipoGastoTooltip;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoGasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
-        private System.Windows.Forms.Button limpiarGastosBoton;
-        private System.Windows.Forms.ToolTip agregarNuevoTipoGastoTooltip;
     }
 }
 

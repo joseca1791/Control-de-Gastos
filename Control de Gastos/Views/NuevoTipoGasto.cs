@@ -58,7 +58,7 @@ namespace Control_de_Gastos
             if (MessageBox.Show("¿Esta seguro de que el tipo de gasto no está entre las opciones anteriores?", 
                 "Agregar nuevo tipo de gasto", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio(original);
+                AgregarNuevoTipoGastoOComercio nuevo = new AgregarNuevoTipoGastoOComercio(original,1);
                 nuevo.Show();
                 nuevo.StartPosition = FormStartPosition.CenterScreen;
                 this.Close();

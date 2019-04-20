@@ -23,6 +23,17 @@ namespace Control_de_Gastos
                 return output.ToList();
             }
         }
+
+        public List<string> contarTiposGasto()
+        {
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select id from TiposGasto order by id", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
         public List<string> buscarTiposGasto(string filter)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -37,28 +48,30 @@ namespace Control_de_Gastos
             tipo = char.ToUpper(tipo[0]) + tipo.Substring(1);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var cuenta = listarTiposGasto().Count + 1;
+                var cuenta = int.Parse(contarTiposGasto().Last()) + 1;
                 string sql = "insert into TiposGasto values (" + cuenta + ",'" + tipo + "')";
                 SQLiteConnection conn = new SQLiteConnection(LoadConnectionString());
                 conn.Open();
                 SQLiteCommand command1 = new SQLiteCommand(sql, conn);
                 command1.ExecuteNonQuery();
                 conn.Close();
-                //CommandDefinition command = new CommandDefinition("insert into TiposGasto values ("+cuenta+",'"+tipo+"')");
-                //cnn.Execute(command);
             }
         }
         #endregion
         #region Comercios
         public List<string> listarComercios()
         {
-            //using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            //{
-
-            //}
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<string>("select nombreComercio from Comercios order by nombreComercio", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public List<string> contarComercios()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select id from Comercios order by id", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -68,6 +81,21 @@ namespace Control_de_Gastos
             {
                 var output = cnn.Query<string>("select nombreComercio from Comercios where nombreComercio like '%" + filter + "%' order by nombreComercio", new DynamicParameters());
                 return output.ToList();
+            }
+        }
+        public void guardarComercio(string nombreComercio)
+        {
+
+            nombreComercio = char.ToUpper(nombreComercio[0]) + nombreComercio.Substring(1);
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var cuenta = int.Parse(contarComercios().Last()) + 1;
+                string sql = "insert into Comercios values (" + cuenta + ",'" + nombreComercio + "')";
+                SQLiteConnection conn = new SQLiteConnection(LoadConnectionString());
+                conn.Open();
+                SQLiteCommand command1 = new SQLiteCommand(sql, conn);
+                command1.ExecuteNonQuery();
+                conn.Close();
             }
         }
         #endregion
