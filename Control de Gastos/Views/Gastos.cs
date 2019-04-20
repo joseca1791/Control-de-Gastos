@@ -12,6 +12,8 @@ using System.Data.SqlClient;
 using System.Xml;
 using System.Globalization;
 using Control_de_Gastos.Controllers;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Control_de_Gastos
 {
@@ -152,14 +154,27 @@ namespace Control_de_Gastos
 
         private async Task callWebServiceAsync(String fechaInicio)
         {
+            var ip= getLocalIP();
             BCCR.wsIndicadoresEconomicosSoapClient bccrws = new BCCR.wsIndicadoresEconomicosSoapClient();
             DataSet ds = new DataSet();
-            ds= await Task.Run(()=>bccrws.ObtenerIndicadoresEconomicos("318", fechaInicio, fechaInicio, "Jose", "N"));
-            //ds = bccrws.ObtenerIndicadoresEconomicosAsync("318", fechaInicio, fechaInicio, "Jose", "N");
+            ds = await Task.Run(() => bccrws.ObtenerIndicadoresEconomicos("318", fechaInicio, fechaInicio, ip, "N"));
             Console.WriteLine(ds);
             var tipoCambio = Convert.ToDecimal(ds.Tables[0].Rows[0].ItemArray[2]);
             tipoCambio = Math.Round(tipoCambio,2);
             tipoCambioTextBox.Text = tipoCambio.ToString();
+        }
+
+        private static string getLocalIP()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No hay adaptadores de red para conectarse al BCCR");
         }
 
         private async void fechaPicker_ValueChanged(object sender, EventArgs e)
@@ -201,7 +216,7 @@ namespace Control_de_Gastos
             else
             {
                 if (colonesRadioButton.Checked) { 
-                MessageBox.Show("No ingresó una cantidad válida para el gasto", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe agregar un monto por más de 1 colón!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 }
             }

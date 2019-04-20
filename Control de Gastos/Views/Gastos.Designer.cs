@@ -168,7 +168,7 @@ namespace Control_de_Gastos
             // 
             this.tipoGastoLabel.AutoSize = true;
             this.tipoGastoLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoGastoLabel.Location = new System.Drawing.Point(15, 119);
+            this.tipoGastoLabel.Location = new System.Drawing.Point(15, 128);
             this.tipoGastoLabel.Name = "tipoGastoLabel";
             this.tipoGastoLabel.Size = new System.Drawing.Size(122, 20);
             this.tipoGastoLabel.TabIndex = 3;
@@ -178,7 +178,7 @@ namespace Control_de_Gastos
             // 
             this.comercioLabel.AutoSize = true;
             this.comercioLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comercioLabel.Location = new System.Drawing.Point(364, 119);
+            this.comercioLabel.Location = new System.Drawing.Point(364, 128);
             this.comercioLabel.Name = "comercioLabel";
             this.comercioLabel.Size = new System.Drawing.Size(86, 20);
             this.comercioLabel.TabIndex = 4;
@@ -188,7 +188,7 @@ namespace Control_de_Gastos
             // 
             this.cantidadLabel.AutoSize = true;
             this.cantidadLabel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadLabel.Location = new System.Drawing.Point(675, 144);
+            this.cantidadLabel.Location = new System.Drawing.Point(675, 153);
             this.cantidadLabel.Name = "cantidadLabel";
             this.cantidadLabel.Size = new System.Drawing.Size(61, 20);
             this.cantidadLabel.TabIndex = 5;
@@ -197,7 +197,7 @@ namespace Control_de_Gastos
             // cantidadBox
             // 
             this.cantidadBox.DecimalPlaces = 2;
-            this.cantidadBox.Location = new System.Drawing.Point(886, 148);
+            this.cantidadBox.Location = new System.Drawing.Point(886, 157);
             this.cantidadBox.Name = "cantidadBox";
             this.cantidadBox.Size = new System.Drawing.Size(113, 20);
             this.cantidadBox.TabIndex = 8;
@@ -221,7 +221,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoTipoGastoImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoTipoGastoImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoTipoGastoImage.Image")));
-            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(179, 145);
+            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(179, 154);
             this.agregarNuevoTipoGastoImage.Name = "agregarNuevoTipoGastoImage";
             this.agregarNuevoTipoGastoImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoTipoGastoImage.TabIndex = 12;
@@ -233,7 +233,7 @@ namespace Control_de_Gastos
             // 
             this.nuevoTipoGastoLabel.AutoSize = true;
             this.nuevoTipoGastoLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(19, 153);
+            this.nuevoTipoGastoLabel.Location = new System.Drawing.Point(19, 162);
             this.nuevoTipoGastoLabel.Name = "nuevoTipoGastoLabel";
             this.nuevoTipoGastoLabel.Size = new System.Drawing.Size(154, 15);
             this.nuevoTipoGastoLabel.TabIndex = 13;
@@ -243,7 +243,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioLabel.AutoSize = true;
             this.agregarNuevoComercioLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(365, 148);
+            this.agregarNuevoComercioLabel.Location = new System.Drawing.Point(365, 157);
             this.agregarNuevoComercioLabel.Name = "agregarNuevoComercioLabel";
             this.agregarNuevoComercioLabel.Size = new System.Drawing.Size(136, 15);
             this.agregarNuevoComercioLabel.TabIndex = 14;
@@ -253,7 +253,7 @@ namespace Control_de_Gastos
             // 
             this.agregarNuevoComercioImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.agregarNuevoComercioImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoComercioImage.Image")));
-            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(507, 144);
+            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(507, 153);
             this.agregarNuevoComercioImage.Name = "agregarNuevoComercioImage";
             this.agregarNuevoComercioImage.Size = new System.Drawing.Size(32, 32);
             this.agregarNuevoComercioImage.TabIndex = 15;
@@ -301,7 +301,7 @@ namespace Control_de_Gastos
             this.tipoCambioPanel.Controls.Add(this.totalLabel);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioTextBox);
             this.tipoCambioPanel.Controls.Add(this.tipoCambioLabel);
-            this.tipoCambioPanel.Location = new System.Drawing.Point(672, 173);
+            this.tipoCambioPanel.Location = new System.Drawing.Point(672, 183);
             this.tipoCambioPanel.Name = "tipoCambioPanel";
             this.tipoCambioPanel.Size = new System.Drawing.Size(330, 71);
             this.tipoCambioPanel.TabIndex = 21;
@@ -346,7 +346,7 @@ namespace Control_de_Gastos
             // tipoGastoComboBox
             // 
             this.tipoGastoComboBox.FormattingEnabled = true;
-            this.tipoGastoComboBox.Location = new System.Drawing.Point(159, 118);
+            this.tipoGastoComboBox.Location = new System.Drawing.Point(159, 127);
             this.tipoGastoComboBox.Name = "tipoGastoComboBox";
             this.tipoGastoComboBox.Size = new System.Drawing.Size(121, 21);
             this.tipoGastoComboBox.TabIndex = 22;
@@ -354,7 +354,7 @@ namespace Control_de_Gastos
             // comercioComboBox
             // 
             this.comercioComboBox.FormattingEnabled = true;
-            this.comercioComboBox.Location = new System.Drawing.Point(471, 118);
+            this.comercioComboBox.Location = new System.Drawing.Point(471, 127);
             this.comercioComboBox.Name = "comercioComboBox";
             this.comercioComboBox.Size = new System.Drawing.Size(121, 21);
             this.comercioComboBox.TabIndex = 23;
