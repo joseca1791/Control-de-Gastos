@@ -154,27 +154,17 @@ namespace Control_de_Gastos
 
         private async Task callWebServiceAsync(String fechaInicio)
         {
-            var ip= getLocalIP();
+            //No enviar el nombre completo de la maquina, combinar el nombre
+            var primeraDivision = System.Environment.MachineName.Substring(3);
+            var segundaDivision = System.Environment.MachineName.Substring(4);
+            var nombre = segundaDivision + primeraDivision + "MACH1";
             BCCR.wsIndicadoresEconomicosSoapClient bccrws = new BCCR.wsIndicadoresEconomicosSoapClient();
             DataSet ds = new DataSet();
-            ds = await Task.Run(() => bccrws.ObtenerIndicadoresEconomicos("318", fechaInicio, fechaInicio, ip, "N"));
+            ds = await Task.Run(() => bccrws.ObtenerIndicadoresEconomicos("318", fechaInicio, fechaInicio, nombre, "N"));
             Console.WriteLine(ds);
             var tipoCambio = Convert.ToDecimal(ds.Tables[0].Rows[0].ItemArray[2]);
             tipoCambio = Math.Round(tipoCambio,2);
             tipoCambioTextBox.Text = tipoCambio.ToString();
-        }
-
-        private static string getLocalIP()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("No hay adaptadores de red para conectarse al BCCR");
         }
 
         private async void fechaPicker_ValueChanged(object sender, EventArgs e)
