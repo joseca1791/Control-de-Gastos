@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.elementoTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.closeAgrNueTipGasOComForm = new System.Windows.Forms.Button();
             this.agregarPictureBox = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.agregarPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +73,7 @@
             this.agregarPictureBox.Size = new System.Drawing.Size(55, 50);
             this.agregarPictureBox.TabIndex = 1;
             this.agregarPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.agregarPictureBox, "Haga clic para confirmar el nuevo elemento agregado");
             this.agregarPictureBox.Click += new System.EventHandler(this.agregarPictureBox_Click);
             // 
             // AgregarNuevoTipoGastoOComercio
@@ -85,6 +88,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AgregarNuevoTipoGastoOComercio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AgregarNuevoTipoGastoOComercio";
             ((System.ComponentModel.ISupportInitialize)(this.agregarPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -98,5 +102,6 @@
         private System.Windows.Forms.PictureBox agregarPictureBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button closeAgrNueTipGasOComForm;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

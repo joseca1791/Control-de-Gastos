@@ -121,19 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="digitarGastosToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAABuvAAAbrwFeGpEcAAAAB3RJ
-        TUUH4wMJCzYjQYL5MAAAAX1JREFUKFNjwAcYGRkZfLS1GTLs7RkSTE0ZJLm5oTJYACsLI0NFsipDgLqx
-        WIq1rVO0sZEqUJgJIosGhAXYGV6sM2UIcZczbQixOrA6MuTbmqDgm0l6elZQJQggL8rM8P+mGENLioL1
-        1nb1y6urJP/3x8v/n+pndzVVz0APqgwCDBRYwHR7rKDv/japO5f7xf5f7OL/v7KI57qHBYfj/80tYHkw
-        8DRgBVHMkxK5Yw808L8AKTxRz/l/RynnybYITtOJJdIM0uwSYLUMCgpyDG5qDOyz0riLjjTxv7/czf//
-        aBXb/zWpDPty7Bk0jzXzM3CyMUIUgwAPvwhzXqBkxbYqwW+Xu/j+HwMqXp3KsDPVmkFpRhQjAxOSWjBw
-        tlIWXjPJ/9LO6S7/5+RK/pkdw7QpyZJBrjsQqgAd1GQYuRxfFvBqzzyfnVVphvEKEhyiLb5QSSyAzcpA
-        PKQ23cBHT1WQZ02/E4OhEgdUCjsAhSXnmj5nBm87WYgITsDAAABN+GwTJjA7vQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="salirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -258,6 +245,38 @@
         RK5CYII=
 </value>
   </data>
+  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TipoGasto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Lugar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Monto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="agregarNuevoComercioImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJ
+        TUUH4wIQDQgkit86+QAAAvdJREFUSEu11l2IjFEcx/FnEJbRalZmzNtO7AViLtkLLpWXWilx4VaK3JGb
+        lZLCBW24kAsp5TW5IIVSiJKXInkXCnm78Z53vr9nz5nOPHP2ebaZnPq0s+ft/8yZc/7nCZJKqVQKyuVy
+        1FCMRBuGdXZ21rVrTEvFmWgIfydiCbbgME7jLI5jB5ajihFo7gHstzQBZ2I3nuAn/sZ4Az3IQmg1wnkG
+        VWxnjMdmvIYvSJwvOIhpSA5uvymmQEv5B76J5bvx26mLuov5+Xw+PrgaMRVX4JtIvmIT5mEuVuA5fH3l
+        JXrsBmwoqkQW2jC+CaxHyCEcU61W9fcYfH0t7Y8ZMNGcQqWOyFbELa/cQ9YMCwqFgjbgIad9IGeQqdvp
+        VEg33sE3yHUfzQTWiViZzdaG1r7tHtMhSbOB5RrGmaFhYCWHZ6YxSSuBv6EHtSOkjJSUHKxwc5m4NvBR
+        pz1JHzFTQaVSUWAlCrfxPS7jvMd+ZEzcoFgspvh/g9PuuogXcOc+h9E2LR5wGrSr12MMRnnockiZuAqs
+        Bx/utEctwAfY+e8gzCgadNJUyi8sgtoGZIsJHEf7x/3WT9GlBgU+YSr/V2BlLzu/kskkNWip9bvZBi21
+        UmIH2j30E0SXWks61rS7VLcYn2Dnv42cfaqNptL6jFu47qH02GHi2s2lzenrewPRpKTLp03HQYF1f/4w
+        DUkeopXjpBeJ/sF8KOKBaUjSSgLRPT0H/YP5oMHb4esc1UrgC2g3Q2uXxHTE3atWs4GVLpfBjDSFCm2S
+        dUhKnc1ei0eQrrsWVagUHQG9QfoGWo8xAeEYrjk9sF7wfH2tm5gMEy1S1IASTsE3gWjJ+rAUulzW4BV8
+        fUUrNAvhmfcWc1NJAUoqcUdML3lxL3pyCeErj8QW2wlprMZgj5nrLXRKdEyTg9qSy9UymnShF1fxEb5A
+        op9AO34Xulk9vdUMPqhb7EAjg9lYhW3Yi33YibXQ6y4/Y5hCmwsYLXYiVzqdHvBmajgyDSUI/gEyob4C
+        lhxy3QAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="agregarNuevoTipoGastoTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>304, 17</value>
   </metadata>
@@ -281,61 +300,11 @@
         lhxy3QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="agregarNuevoComercioImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJ
-        TUUH4wIQDQgkit86+QAAAvdJREFUSEu11l2IjFEcx/FnEJbRalZmzNtO7AViLtkLLpWXWilx4VaK3JGb
-        lZLCBW24kAsp5TW5IIVSiJKXInkXCnm78Z53vr9nz5nOPHP2ebaZnPq0s+ft/8yZc/7nCZJKqVQKyuVy
-        1FCMRBuGdXZ21rVrTEvFmWgIfydiCbbgME7jLI5jB5ajihFo7gHstzQBZ2I3nuAn/sZ4Az3IQmg1wnkG
-        VWxnjMdmvIYvSJwvOIhpSA5uvymmQEv5B76J5bvx26mLuov5+Xw+PrgaMRVX4JtIvmIT5mEuVuA5fH3l
-        JXrsBmwoqkQW2jC+CaxHyCEcU61W9fcYfH0t7Y8ZMNGcQqWOyFbELa/cQ9YMCwqFgjbgIad9IGeQqdvp
-        VEg33sE3yHUfzQTWiViZzdaG1r7tHtMhSbOB5RrGmaFhYCWHZ6YxSSuBv6EHtSOkjJSUHKxwc5m4NvBR
-        pz1JHzFTQaVSUWAlCrfxPS7jvMd+ZEzcoFgspvh/g9PuuogXcOc+h9E2LR5wGrSr12MMRnnockiZuAqs
-        Bx/utEctwAfY+e8gzCgadNJUyi8sgtoGZIsJHEf7x/3WT9GlBgU+YSr/V2BlLzu/kskkNWip9bvZBi21
-        UmIH2j30E0SXWks61rS7VLcYn2Dnv42cfaqNptL6jFu47qH02GHi2s2lzenrewPRpKTLp03HQYF1f/4w
-        DUkeopXjpBeJ/sF8KOKBaUjSSgLRPT0H/YP5oMHb4esc1UrgC2g3Q2uXxHTE3atWs4GVLpfBjDSFCm2S
-        dUhKnc1ei0eQrrsWVagUHQG9QfoGWo8xAeEYrjk9sF7wfH2tm5gMEy1S1IASTsE3gWjJ+rAUulzW4BV8
-        fUUrNAvhmfcWc1NJAUoqcUdML3lxL3pyCeErj8QW2wlprMZgj5nrLXRKdEyTg9qSy9UymnShF1fxEb5A
-        op9AO34Xulk9vdUMPqhb7EAjg9lYhW3Yi33YibXQ6y4/Y5hCmwsYLXYiVzqdHvBmajgyDSUI/gEyob4C
-        lhxy3QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TipoGasto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Lugar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Monto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="reporteGridView.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="reporteGridView.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="dataSetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
-  </metadata>
-  <metadata name="agregarNuevoTipoGastoTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>304, 17</value>
-  </metadata>
-  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TipoGasto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Lugar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Monto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>99</value>

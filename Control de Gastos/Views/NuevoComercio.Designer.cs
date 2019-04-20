@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoComercio));
             this.comEncontradosComboBox = new System.Windows.Forms.ComboBox();
             this.buscarComercioTextbox = new System.Windows.Forms.TextBox();
@@ -35,6 +36,7 @@
             this.lupaBuscarComercio = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.addCommerceTypePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lupaBuscarComercio)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +67,7 @@
             this.addCommerceTypePictureBox.Size = new System.Drawing.Size(51, 50);
             this.addCommerceTypePictureBox.TabIndex = 4;
             this.addCommerceTypePictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.addCommerceTypePictureBox, "Haga clic para agregar un nuevo comercio");
             this.addCommerceTypePictureBox.Click += new System.EventHandler(this.addCommerceTypePictureBox_Click);
             // 
             // lupaBuscarComercio
@@ -76,6 +79,7 @@
             this.lupaBuscarComercio.Size = new System.Drawing.Size(51, 51);
             this.lupaBuscarComercio.TabIndex = 1;
             this.lupaBuscarComercio.TabStop = false;
+            this.toolTip1.SetToolTip(this.lupaBuscarComercio, "Haga clic para buscar el comercio digitado");
             this.lupaBuscarComercio.Click += new System.EventHandler(this.lupaBuscarComercio_Click);
             // 
             // label1
@@ -124,5 +128,6 @@
         private System.Windows.Forms.PictureBox addCommerceTypePictureBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

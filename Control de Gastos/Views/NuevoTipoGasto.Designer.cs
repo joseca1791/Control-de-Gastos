@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tipoGastoEncontradosComboBox = new System.Windows.Forms.ComboBox();
             this.buscarTipoGastoTextbox = new System.Windows.Forms.TextBox();
             this.newExpenseTypePictureBox = new System.Windows.Forms.PictureBox();
             this.lupaBuscarComercio = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.newExpenseTypePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lupaBuscarComercio)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +66,7 @@
             this.newExpenseTypePictureBox.Size = new System.Drawing.Size(51, 50);
             this.newExpenseTypePictureBox.TabIndex = 4;
             this.newExpenseTypePictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.newExpenseTypePictureBox, "Haga clic para agregar un nuevo tipo de gasto");
             this.newExpenseTypePictureBox.Click += new System.EventHandler(this.newExpenseTypePictureBox_Click);
             // 
             // lupaBuscarComercio
@@ -75,6 +78,7 @@
             this.lupaBuscarComercio.Size = new System.Drawing.Size(51, 51);
             this.lupaBuscarComercio.TabIndex = 1;
             this.lupaBuscarComercio.TabStop = false;
+            this.toolTip1.SetToolTip(this.lupaBuscarComercio, "Haga clic para buscar el tipo de gasto digitado");
             this.lupaBuscarComercio.Click += new System.EventHandler(this.lupaBuscarComercio_Click);
             // 
             // label1
@@ -123,5 +127,6 @@
         private System.Windows.Forms.PictureBox newExpenseTypePictureBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

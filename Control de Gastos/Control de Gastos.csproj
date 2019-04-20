@@ -112,6 +112,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\BCCR\wsIndicadoresEconomicos.wsdl" />
+    <None Include="editar.png" />
     <Content Include="Gastos.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

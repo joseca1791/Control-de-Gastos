@@ -25,6 +25,7 @@ namespace Control_de_Gastos
             InitializeComponent();
             comEncontradosComboBox.Enabled = false;
             original = form;
+            addCommerceTypePictureBox.Hide();
         }
 
         private void lupaBuscarComercio_Click(object sender, EventArgs e)
@@ -39,6 +40,8 @@ namespace Control_de_Gastos
             {
                 comEncontradosComboBox.Text = "Ningún resultado encontrado";
                 comEncontradosComboBox.Enabled = false;
+                addCommerceTypePictureBox.Show();
+                lupaBuscarComercio.Left = 60;
                 return;
             }
             comEncontradosComboBox.Text = null;
@@ -49,8 +52,6 @@ namespace Control_de_Gastos
             }
             comEncontradosComboBox.Text = resultados[0].ToString();
             comEncontradosComboBox.Enabled = true;
-            addCommerceTypePictureBox.Show();
-            lupaBuscarComercio.Left = 60;
         }
 
         private void addCommerceTypePictureBox_Click(object sender, EventArgs e)

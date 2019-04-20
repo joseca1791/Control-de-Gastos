@@ -40,7 +40,7 @@ namespace Control_de_Gastos
             {
                 try {
                     if (tipo == 1) { 
-                        sqlitedao.guardarTiposGasto(elementoTextBox.Text);
+                        sqlitedao.guardarTiposGasto(elementoTextBox.Text.Trim());
                         MessageBox.Show("Elemento agregado correctamente");
                         original.emptyTipoGastoCombobox();
                         original.fillTipoGastoCombobox();
@@ -48,7 +48,7 @@ namespace Control_de_Gastos
                     }
                     else
                     {
-                        sqlitedao.guardarComercio(elementoTextBox.Text);
+                        sqlitedao.guardarComercio(elementoTextBox.Text.Trim());
                         MessageBox.Show("Elemento agregado correctamente");
                         original.emptyComercioCombobox();
                         original.fillComercioCombobox();

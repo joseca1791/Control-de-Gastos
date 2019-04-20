@@ -88,7 +88,7 @@ namespace Control_de_Gastos
                     cantidad = decimal.Parse(totalDolaresTextBox.Text);
                     decimal.Round(cantidad, 2);
                 }
-                ingresarGasto(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(),cantidad);
+                ingresarGasto(row.Cells[0].Value.ToString().Trim(), row.Cells[1].Value.ToString().Trim(), row.Cells[2].Value.ToString().Trim(), cantidad);
             }
                 MessageBox.Show("Total de gastos agregados: "+numeroDeGastosPorIngresar,"Ingresar Gastos",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 reestablecerElementos();
@@ -115,11 +115,10 @@ namespace Control_de_Gastos
 
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            reporteGridView.DataSource = principalController.generarReporte();
-            reporteGridView.Columns[2].Width = 407;
             panelPrincipal.Hide();
             panelReporte.Show();
-
+            reporteGridView.DataSource = principalController.generarReporte();
+            reporteGridView.Columns[2].Width = 407;
         }
 
         private void agregarNuevoTipoGastoImage_Click(object sender, EventArgs e)
