@@ -29,7 +29,8 @@ namespace Control_de_Gastos
             fillTipoGastoCombobox();
             fillComercioCombobox();
             panelReporte.Hide();
-            fechaPicker.MaxDate = DateTime.Today;
+            var maxDate=fechaPicker.MaxDate = DateTime.Today;
+            fechaPicker.Value = maxDate;
         }
 
 
@@ -200,6 +201,7 @@ namespace Control_de_Gastos
             if (colonesRadioButton.Checked && cantidadBox.Value != 1)
             {
                 gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToShortDateString(), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, cantidadBox.Value);
+                cantidadBox.Value = cantidadBox.Minimum;
                 return;
             }
             else
@@ -212,6 +214,7 @@ namespace Control_de_Gastos
             if (dolaresRadioButton.Checked && String.IsNullOrEmpty(totalDolaresTextBox.Text)==false)
             {
                 gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToShortDateString(), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, totalDolaresTextBox.Text);
+                cantidadBox.Value = cantidadBox.Minimum;
                 return;
             }
             else

@@ -52,6 +52,8 @@ namespace Control_de_Gastos
             }
             tipoGastoEncontradosComboBox.Text = resultados[0].ToString();
             tipoGastoEncontradosComboBox.Enabled = true;
+            newExpenseTypePictureBox.Show();
+            lupaBuscarComercio.Left = 60;
         }
 
         private void newExpenseTypePictureBox_Click(object sender, EventArgs e)

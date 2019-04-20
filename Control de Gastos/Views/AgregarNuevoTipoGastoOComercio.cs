@@ -44,6 +44,7 @@ namespace Control_de_Gastos
                         MessageBox.Show("Elemento agregado correctamente");
                         original.emptyTipoGastoCombobox();
                         original.fillTipoGastoCombobox();
+                        original.tipoGastoComboBox.Text = elementoTextBox.Text;
                         this.Close();
                     }
                     else
@@ -52,6 +53,7 @@ namespace Control_de_Gastos
                         MessageBox.Show("Elemento agregado correctamente");
                         original.emptyComercioCombobox();
                         original.fillComercioCombobox();
+                        original.comercioComboBox.Text = elementoTextBox.Text;
                         this.Close();
                     }
                 }

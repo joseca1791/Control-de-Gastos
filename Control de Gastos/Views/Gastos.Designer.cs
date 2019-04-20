@@ -545,8 +545,8 @@ namespace Control_de_Gastos
         private System.Windows.Forms.Label tipoCambioLabel;
         private System.Windows.Forms.TextBox totalDolaresTextBox;
         private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.ComboBox tipoGastoComboBox;
-        private System.Windows.Forms.ComboBox comercioComboBox;
+        public System.Windows.Forms.ComboBox tipoGastoComboBox;
+        public System.Windows.Forms.ComboBox comercioComboBox;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Panel panelReporte;

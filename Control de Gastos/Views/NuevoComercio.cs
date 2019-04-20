@@ -52,6 +52,8 @@ namespace Control_de_Gastos
             }
             comEncontradosComboBox.Text = resultados[0].ToString();
             comEncontradosComboBox.Enabled = true;
+            addCommerceTypePictureBox.Show();
+            lupaBuscarComercio.Left = 60;
         }
 
         private void addCommerceTypePictureBox_Click(object sender, EventArgs e)

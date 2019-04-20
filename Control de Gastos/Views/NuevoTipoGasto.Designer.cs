@@ -1,4 +1,6 @@
-﻿namespace Control_de_Gastos
+﻿using System;
+
+namespace Control_de_Gastos
 {
     partial class NuevoTipoGasto
     {
