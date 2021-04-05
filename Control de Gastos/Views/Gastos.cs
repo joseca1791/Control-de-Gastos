@@ -14,6 +14,7 @@ using System.Globalization;
 using Control_de_Gastos.Controllers;
 using System.Net;
 using System.Net.Sockets;
+using Control_de_Gastos.Models;
 
 namespace Control_de_Gastos
 {
@@ -120,6 +121,15 @@ namespace Control_de_Gastos
             panelReporte.Show();
             reporteGridView.DataSource = principalController.generarReporte();
             reporteGridView.Columns[2].Width = 407;
+
+            //Iniciar los elementos para generar columnas del reporte
+
+            var list = principalController.llenarTipodeGasto(this);
+            foreach (var element in list)
+            {
+                columnasListBox.Items.Add(element);
+            }
+            columnasListBox.Text = list[0];
         }
 
         private void agregarNuevoTipoGastoImage_Click(object sender, EventArgs e)
@@ -200,7 +210,7 @@ namespace Control_de_Gastos
         {
             if (colonesRadioButton.Checked && cantidadBox.Value != 1)
             {
-                gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToShortDateString(), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, cantidadBox.Value);
+                gastosPorIngresarGridView.Rows.Add(fechaPicker.Value.ToString("yyyy-MM-dd"), tipoGastoComboBox.SelectedItem, comercioComboBox.SelectedItem, cantidadBox.Value);
                 cantidadBox.Value = cantidadBox.Minimum;
                 return;
             }
@@ -227,6 +237,59 @@ namespace Control_de_Gastos
         private void limpiarGastosBoton_Click(object sender, EventArgs e)
         {
             gastosPorIngresarGridView.Rows.Clear();
+        }
+
+        private void genReporteBtn_Click(object sender, EventArgs e)
+        {
+            panelGrafico.Show();
+            panelPrincipal.Hide();
+            panelReporte.Hide();
+            string tipoGasto;
+            this.graficoGastos.Size = new Size(1900, 1000);
+            this.graficoGastos.Series.Clear();
+            if (mostrarMesCheckbox.Checked)
+            {
+                this.graficoGastos.Series.Add("Mes");
+            }
+            Dictionary<string, string> montoPorTipoTotal = new Dictionary<string, string>();
+            for(int i=0; i < columnasListBox.CheckedItems.Count; i++)
+            {
+                tipoGasto = columnasListBox.CheckedItems[i].ToString();
+                this.graficoGastos.Series.Add(tipoGasto);
+                this.graficoGastos.Series[tipoGasto].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                this.graficoGastos.Series[tipoGasto].IsValueShownAsLabel = true;
+                //var monto = principalController.seleccionarMontoTotalPorTipoGasto(x);
+                //montoPorTipoTotal.Add(x, monto);
+                var montoPorMes = principalController.seleccionarMontoTotalPorTipoGastoPorMes(tipoGasto);
+
+                foreach(GastosPorMes y in montoPorMes)
+                {
+                    this.graficoGastos.Series[tipoGasto].Points.AddXY(y.FechaGasto, y.Monto);
+                }
+                //montoPorTipoTotal.Add(x, montoPorMes);
+            }
+            //foreach(string x in columnasListBox.CheckedItems)
+            //{
+            //    this.graficoGastos.Series["Tipo de Gasto"].Points.AddXY(x,montoPorTipoTotal[x]);
+            //}
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mostrarMesCheckbox.Checked)
+            {
+                fechaInicioLabel.Hide();
+                fechaFinalLabel.Hide();
+                datePickerInicio.Hide();
+                datePickerFinal.Hide();
+            }
+            else
+            {
+                fechaInicioLabel.Show();
+                fechaFinalLabel.Show();
+                datePickerInicio.Show();
+                datePickerFinal.Show();
+            }
         }
     }
 }

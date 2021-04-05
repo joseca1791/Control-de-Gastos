@@ -32,9 +32,16 @@ namespace Control_de_Gastos
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gastos));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gastosTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fechaPicker = new System.Windows.Forms.DateTimePicker();
             this.fechaLabel = new System.Windows.Forms.Label();
             this.tipoGastoLabel = new System.Windows.Forms.Label();
@@ -57,31 +64,41 @@ namespace Control_de_Gastos
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.limpiarGastosBoton = new System.Windows.Forms.Button();
             this.agregarAListaBoton = new System.Windows.Forms.Button();
+            this.agregarNuevoComercioImage = new System.Windows.Forms.PictureBox();
+            this.agregarNuevoTipoGastoImage = new System.Windows.Forms.PictureBox();
             this.gastosPorIngresarGridView = new System.Windows.Forms.DataGridView();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelReporte = new System.Windows.Forms.Panel();
+            this.mostrarMesCheckbox = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.columnasListBox = new System.Windows.Forms.CheckedListBox();
+            this.fechaFinalLabel = new System.Windows.Forms.Label();
+            this.fechaInicioLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.datePickerFinal = new System.Windows.Forms.DateTimePicker();
+            this.datePickerInicio = new System.Windows.Forms.DateTimePicker();
+            this.genReporteBtn = new System.Windows.Forms.Button();
+            this.graficoGastos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.reporteGridView = new System.Windows.Forms.DataGridView();
             this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.agregarNuevoTipoGastoTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.agregarNuevoComercioImage = new System.Windows.Forms.PictureBox();
-            this.agregarNuevoTipoGastoImage = new System.Windows.Forms.PictureBox();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelGrafico = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadBox)).BeginInit();
             this.botonesDivisasPanel.SuspendLayout();
             this.tipoCambioPanel.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).BeginInit();
-            this.panelReporte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).BeginInit();
+            this.panelReporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graficoGastos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).BeginInit();
+            this.panelGrafico.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -91,7 +108,7 @@ namespace Control_de_Gastos
             this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1063, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1900, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,6 +121,22 @@ namespace Control_de_Gastos
             this.gastosTab.Size = new System.Drawing.Size(54, 20);
             this.gastosTab.Text = "Gastos";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::Control_de_Gastos.Properties.Resources.editar;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Principal";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -111,6 +144,14 @@ namespace Control_de_Gastos
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             this.reportToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.reportToolStripMenuItem.Text = "Reporte";
+            // 
+            // generarReporteToolStripMenuItem
+            // 
+            this.generarReporteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generarReporteToolStripMenuItem.Image")));
+            this.generarReporteToolStripMenuItem.Name = "generarReporteToolStripMenuItem";
+            this.generarReporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.generarReporteToolStripMenuItem.Text = "Generar Reporte";
+            this.generarReporteToolStripMenuItem.Click += new System.EventHandler(this.generarReporteToolStripMenuItem_Click);
             // 
             // fechaPicker
             // 
@@ -307,7 +348,6 @@ namespace Control_de_Gastos
             // 
             this.panelPrincipal.Controls.Add(this.limpiarGastosBoton);
             this.panelPrincipal.Controls.Add(this.agregarAListaBoton);
-            this.panelPrincipal.Controls.Add(this.gastosPorIngresarGridView);
             this.panelPrincipal.Controls.Add(this.comercioComboBox);
             this.panelPrincipal.Controls.Add(this.tipoCambioPanel);
             this.panelPrincipal.Controls.Add(this.tipoGastoComboBox);
@@ -323,9 +363,10 @@ namespace Control_de_Gastos
             this.panelPrincipal.Controls.Add(this.tipoGastoLabel);
             this.panelPrincipal.Controls.Add(this.fechaLabel);
             this.panelPrincipal.Controls.Add(this.fechaPicker);
-            this.panelPrincipal.Location = new System.Drawing.Point(16, 39);
+            this.panelPrincipal.Controls.Add(this.gastosPorIngresarGridView);
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 12);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1046, 728);
+            this.panelPrincipal.Size = new System.Drawing.Size(1257, 716);
             this.panelPrincipal.TabIndex = 24;
             // 
             // limpiarGastosBoton
@@ -355,6 +396,30 @@ namespace Control_de_Gastos
             this.agregarAListaBoton.Text = "Agregar a lista";
             this.agregarAListaBoton.UseVisualStyleBackColor = false;
             this.agregarAListaBoton.Click += new System.EventHandler(this.agregarAListaBoton_Click);
+            // 
+            // agregarNuevoComercioImage
+            // 
+            this.agregarNuevoComercioImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.agregarNuevoComercioImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoComercioImage.Image")));
+            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(507, 153);
+            this.agregarNuevoComercioImage.Name = "agregarNuevoComercioImage";
+            this.agregarNuevoComercioImage.Size = new System.Drawing.Size(32, 32);
+            this.agregarNuevoComercioImage.TabIndex = 15;
+            this.agregarNuevoComercioImage.TabStop = false;
+            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoComercioImage, "Agregar o buscar un comercio que no está en la lista");
+            this.agregarNuevoComercioImage.Click += new System.EventHandler(this.agregarNuevoComercioImage_Click);
+            // 
+            // agregarNuevoTipoGastoImage
+            // 
+            this.agregarNuevoTipoGastoImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.agregarNuevoTipoGastoImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoTipoGastoImage.Image")));
+            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(179, 154);
+            this.agregarNuevoTipoGastoImage.Name = "agregarNuevoTipoGastoImage";
+            this.agregarNuevoTipoGastoImage.Size = new System.Drawing.Size(32, 32);
+            this.agregarNuevoTipoGastoImage.TabIndex = 12;
+            this.agregarNuevoTipoGastoImage.TabStop = false;
+            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoTipoGastoImage, "Agregar un buscar un tipo de gasto que no está en la lista");
+            this.agregarNuevoTipoGastoImage.Click += new System.EventHandler(this.agregarNuevoTipoGastoImage_Click);
             // 
             // gastosPorIngresarGridView
             // 
@@ -402,12 +467,119 @@ namespace Control_de_Gastos
             // 
             // panelReporte
             // 
+            this.panelReporte.Controls.Add(this.mostrarMesCheckbox);
+            this.panelReporte.Controls.Add(this.label4);
+            this.panelReporte.Controls.Add(this.columnasListBox);
+            this.panelReporte.Controls.Add(this.fechaFinalLabel);
+            this.panelReporte.Controls.Add(this.fechaInicioLabel);
+            this.panelReporte.Controls.Add(this.label1);
+            this.panelReporte.Controls.Add(this.datePickerFinal);
+            this.panelReporte.Controls.Add(this.datePickerInicio);
+            this.panelReporte.Controls.Add(this.genReporteBtn);
             this.panelReporte.Controls.Add(this.reporteGridView);
-            this.panelReporte.Location = new System.Drawing.Point(16, 213);
+            this.panelReporte.Location = new System.Drawing.Point(0, 0);
             this.panelReporte.Name = "panelReporte";
-            this.panelReporte.Size = new System.Drawing.Size(1046, 318);
+            this.panelReporte.Size = new System.Drawing.Size(1260, 969);
             this.panelReporte.TabIndex = 25;
             this.panelReporte.Visible = false;
+            // 
+            // mostrarMesCheckbox
+            // 
+            this.mostrarMesCheckbox.AutoSize = true;
+            this.mostrarMesCheckbox.Location = new System.Drawing.Point(1155, 74);
+            this.mostrarMesCheckbox.Name = "mostrarMesCheckbox";
+            this.mostrarMesCheckbox.Size = new System.Drawing.Size(102, 17);
+            this.mostrarMesCheckbox.TabIndex = 10;
+            this.mostrarMesCheckbox.Text = "Mostrar por Mes";
+            this.mostrarMesCheckbox.UseVisualStyleBackColor = true;
+            this.mostrarMesCheckbox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1134, 211);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Columnas para desplegar";
+            // 
+            // columnasListBox
+            // 
+            this.columnasListBox.FormattingEnabled = true;
+            this.columnasListBox.Location = new System.Drawing.Point(1137, 229);
+            this.columnasListBox.Name = "columnasListBox";
+            this.columnasListBox.Size = new System.Drawing.Size(120, 94);
+            this.columnasListBox.TabIndex = 8;
+            // 
+            // fechaFinalLabel
+            // 
+            this.fechaFinalLabel.AutoSize = true;
+            this.fechaFinalLabel.Location = new System.Drawing.Point(1195, 157);
+            this.fechaFinalLabel.Name = "fechaFinalLabel";
+            this.fechaFinalLabel.Size = new System.Drawing.Size(62, 13);
+            this.fechaFinalLabel.TabIndex = 7;
+            this.fechaFinalLabel.Text = "Fecha Final";
+            // 
+            // fechaInicioLabel
+            // 
+            this.fechaInicioLabel.AutoSize = true;
+            this.fechaInicioLabel.Location = new System.Drawing.Point(1177, 108);
+            this.fechaInicioLabel.Name = "fechaInicioLabel";
+            this.fechaInicioLabel.Size = new System.Drawing.Size(80, 13);
+            this.fechaInicioLabel.TabIndex = 6;
+            this.fechaInicioLabel.Text = "Fecha de Inicio";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1144, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Generador de reportes";
+            // 
+            // datePickerFinal
+            // 
+            this.datePickerFinal.Location = new System.Drawing.Point(1060, 173);
+            this.datePickerFinal.Name = "datePickerFinal";
+            this.datePickerFinal.Size = new System.Drawing.Size(200, 20);
+            this.datePickerFinal.TabIndex = 4;
+            // 
+            // datePickerInicio
+            // 
+            this.datePickerInicio.Location = new System.Drawing.Point(1057, 124);
+            this.datePickerInicio.Name = "datePickerInicio";
+            this.datePickerInicio.Size = new System.Drawing.Size(200, 20);
+            this.datePickerInicio.TabIndex = 3;
+            // 
+            // genReporteBtn
+            // 
+            this.genReporteBtn.Location = new System.Drawing.Point(1114, 329);
+            this.genReporteBtn.Name = "genReporteBtn";
+            this.genReporteBtn.Size = new System.Drawing.Size(143, 38);
+            this.genReporteBtn.TabIndex = 2;
+            this.genReporteBtn.Text = "Generar Reporte";
+            this.genReporteBtn.UseVisualStyleBackColor = true;
+            this.genReporteBtn.Click += new System.EventHandler(this.genReporteBtn_Click);
+            // 
+            // graficoGastos
+            // 
+            chartArea11.Name = "ChartArea1";
+            this.graficoGastos.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.graficoGastos.Legends.Add(legend11);
+            this.graficoGastos.Location = new System.Drawing.Point(0, 13);
+            this.graficoGastos.Name = "graficoGastos";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.graficoGastos.Series.Add(series11);
+            this.graficoGastos.Size = new System.Drawing.Size(1051, 565);
+            this.graficoGastos.TabIndex = 1;
+            this.graficoGastos.Text = "chart1";
+            title11.Name = "Gastos";
+            title11.Text = "Gastos";
+            this.graficoGastos.Titles.Add(title11);
             // 
             // reporteGridView
             // 
@@ -415,18 +587,16 @@ namespace Control_de_Gastos
             this.reporteGridView.AllowUserToDeleteRows = false;
             this.reporteGridView.AllowUserToResizeColumns = false;
             this.reporteGridView.AllowUserToResizeRows = false;
-            this.reporteGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.reporteGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.reporteGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.reporteGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.reporteGridView.Location = new System.Drawing.Point(10, 9);
+            this.reporteGridView.Location = new System.Drawing.Point(5, 27);
             this.reporteGridView.Name = "reporteGridView";
             this.reporteGridView.ReadOnly = true;
-            this.reporteGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.reporteGridView.RowTemplate.ReadOnly = true;
             this.reporteGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.reporteGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.reporteGridView.Size = new System.Drawing.Size(767, 274);
+            this.reporteGridView.Size = new System.Drawing.Size(767, 382);
             this.reporteGridView.TabIndex = 0;
             this.reporteGridView.TabStop = false;
             // 
@@ -435,63 +605,24 @@ namespace Control_de_Gastos
             this.dataSetBindingSource.DataSource = typeof(System.Data.DataSet);
             this.dataSetBindingSource.Position = 0;
             // 
-            // agregarNuevoComercioImage
+            // panelGrafico
             // 
-            this.agregarNuevoComercioImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.agregarNuevoComercioImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoComercioImage.Image")));
-            this.agregarNuevoComercioImage.Location = new System.Drawing.Point(507, 153);
-            this.agregarNuevoComercioImage.Name = "agregarNuevoComercioImage";
-            this.agregarNuevoComercioImage.Size = new System.Drawing.Size(32, 32);
-            this.agregarNuevoComercioImage.TabIndex = 15;
-            this.agregarNuevoComercioImage.TabStop = false;
-            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoComercioImage, "Agregar o buscar un comercio que no está en la lista");
-            this.agregarNuevoComercioImage.Click += new System.EventHandler(this.agregarNuevoComercioImage_Click);
-            // 
-            // agregarNuevoTipoGastoImage
-            // 
-            this.agregarNuevoTipoGastoImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.agregarNuevoTipoGastoImage.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoTipoGastoImage.Image")));
-            this.agregarNuevoTipoGastoImage.Location = new System.Drawing.Point(179, 154);
-            this.agregarNuevoTipoGastoImage.Name = "agregarNuevoTipoGastoImage";
-            this.agregarNuevoTipoGastoImage.Size = new System.Drawing.Size(32, 32);
-            this.agregarNuevoTipoGastoImage.TabIndex = 12;
-            this.agregarNuevoTipoGastoImage.TabStop = false;
-            this.agregarNuevoTipoGastoTooltip.SetToolTip(this.agregarNuevoTipoGastoImage, "Agregar un buscar un tipo de gasto que no está en la lista");
-            this.agregarNuevoTipoGastoImage.Click += new System.EventHandler(this.agregarNuevoTipoGastoImage_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Image = global::Control_de_Gastos.Properties.Resources.editar;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Principal";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // generarReporteToolStripMenuItem
-            // 
-            this.generarReporteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generarReporteToolStripMenuItem.Image")));
-            this.generarReporteToolStripMenuItem.Name = "generarReporteToolStripMenuItem";
-            this.generarReporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.generarReporteToolStripMenuItem.Text = "Generar Reporte";
-            this.generarReporteToolStripMenuItem.Click += new System.EventHandler(this.generarReporteToolStripMenuItem_Click);
+            this.panelGrafico.Controls.Add(this.graficoGastos);
+            this.panelGrafico.Location = new System.Drawing.Point(0, 0);
+            this.panelGrafico.Name = "panelGrafico";
+            this.panelGrafico.Size = new System.Drawing.Size(1900, 1038);
+            this.panelGrafico.TabIndex = 11;
             // 
             // Gastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1063, 779);
-            this.Controls.Add(this.panelPrincipal);
-            this.Controls.Add(this.panelReporte);
+            this.ClientSize = new System.Drawing.Size(1900, 1037);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelReporte);
+            this.Controls.Add(this.panelPrincipal);
+            this.Controls.Add(this.panelGrafico);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -508,12 +639,15 @@ namespace Control_de_Gastos
             this.tipoCambioPanel.PerformLayout();
             this.panelPrincipal.ResumeLayout(false);
             this.panelPrincipal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).EndInit();
-            this.panelReporte.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoComercioImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agregarNuevoTipoGastoImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gastosPorIngresarGridView)).EndInit();
+            this.panelReporte.ResumeLayout(false);
+            this.panelReporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graficoGastos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reporteGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).EndInit();
+            this.panelGrafico.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,6 +694,17 @@ namespace Control_de_Gastos
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoGasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graficoGastos;
+        private System.Windows.Forms.Button genReporteBtn;
+        private System.Windows.Forms.Label fechaFinalLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker datePickerFinal;
+        private System.Windows.Forms.DateTimePicker datePickerInicio;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckedListBox columnasListBox;
+        private System.Windows.Forms.CheckBox mostrarMesCheckbox;
+        private System.Windows.Forms.Label fechaInicioLabel;
+        private System.Windows.Forms.Panel panelGrafico;
     }
 }
 

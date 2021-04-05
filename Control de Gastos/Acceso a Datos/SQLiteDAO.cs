@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Control_de_Gastos.Models;
 
 namespace Control_de_Gastos
 {
@@ -98,6 +99,39 @@ namespace Control_de_Gastos
                 conn.Close();
             }
         }
+
+        public string seleccionarMontoTotalPorTipoGasto(string tipoGasto)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try { 
+                var output = cnn.Query<string>("select SUM(Monto) from GastoUnitarioTable where TipoGasto = '"+tipoGasto+"'", new DynamicParameters());
+                return output.ElementAt(0);
+                }
+                catch 
+                {
+                    return null;
+                }
+            }
+        }
+
+        public List<GastosPorMes> seleccionarMontoTotalPorTipoGastoPorMes(string tipoGasto)
+        {
+            List<GastosPorMes> gastosPorMes = new List<GastosPorMes>();
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try
+                {
+                    gastosPorMes = cnn.Query<GastosPorMes>("SELECT TipoGasto, sum(Monto) as Monto, strftime('%m-%Y',Fecha) as FechaGasto from GastoUnitarioTable where TipoGasto = '" + tipoGasto + "' GROUP BY TipoGasto, FechaGasto ORDER BY FechaGasto", new DynamicParameters()).ToList();
+                    return gastosPorMes;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
         #endregion
 
         public DataTable listarGastosReporte()

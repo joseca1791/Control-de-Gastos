@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Control_de_Gastos.Models;
 
 namespace Control_de_Gastos.Controllers
 {
@@ -31,6 +32,16 @@ namespace Control_de_Gastos.Controllers
         public DataTable generarReporte()
         {
             return sqlitedao.listarGastosReporte();
+        }
+
+        public string seleccionarMontoTotalPorTipoGasto(string tipoGasto)
+        {
+            return sqlitedao.seleccionarMontoTotalPorTipoGasto(tipoGasto);
+        }
+
+        public List<GastosPorMes> seleccionarMontoTotalPorTipoGastoPorMes(string tipoGasto)
+        {
+            return sqlitedao.seleccionarMontoTotalPorTipoGastoPorMes(tipoGasto);
         }
     }
 }
